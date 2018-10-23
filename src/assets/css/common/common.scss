@@ -1,0 +1,43 @@
+@import '../public/var.scss';
+
+.header {
+    height: 6rem;
+    background-color: $MAIN_COLOR;
+    span {
+        font-size: 2rem;
+        color: $TEXT_COLOR_WHITE;
+    }
+    button {
+        height:2rem;
+        width:2rem;
+        background-color: $COLOR_BLACK;
+        border:none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            background-color: $COLOR_BLACK;
+        }
+        span {
+            font-size: 0.6rem;
+            &:hover {
+                background-color: $COLOR_BLACK;
+                border: none;
+            }
+        }
+        
+    }
+}
+
+.content {
+    height: auto;
+    min-height: 29rem;
+}
+
+
+
+
+.footer {
+    height: 8rem;
+    background-color: $COLOR_BLACK;
+}

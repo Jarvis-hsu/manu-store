@@ -1,0 +1,18 @@
+//mixin
+@import './public/mixin.scss';
+//var
+@import './public/var.scss';
+
+html{
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+}
+
+
+//间距
+.padding-0-44 {
+    @include mediaPadding(0, 4rem, 0, 4rem);
+}
+

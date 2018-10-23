@@ -1,0 +1,60 @@
+@mixin mainColor {
+    color: $MAIN_COLOR
+}
+
+//定位上下左右居中
+@mixin center {
+	position: absolute;
+	top: 50%;
+    left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%); 	/* IE 9 */
+	-moz-transform: translate(-50%, -50%); 	/* Firefox */
+	-webkit-transform: translate(-50%, -50%); /* Safari 和 Chrome */
+	-o-transform: translate(-50%, -50%); 	/* Opera */
+}
+
+//定位垂直居中
+@mixin verticalCenter {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	-ms-transform: translateY(-50%); 	/* IE 9 */
+	-moz-transform: translateY(-50%); 	/* Firefox */
+	-webkit-transform: translateY(-50%); /* Safari 和 Chrome */
+	-o-transform: translateY(-50%); 	/* Opera */
+}
+
+//定位水平居中
+@mixin horizontalCenter {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	-ms-transform: translateX(-50%); 	/* IE 9 */
+	-moz-transform: translateX(-50%); 	/* Firefox */
+	-webkit-transform: translateX(-50%); /* Safari 和 Chrome */
+	-o-transform: translateX(-50%); 	/* Opera */
+}
+
+//自适应间距
+@mixin mediaPadding($style1, $style2 ,$style3, $style4) {
+
+    @media only screen and (max-width: 768px){
+        padding: $style1/1.8 $style2/1.8  $style3/1.8 $style4/1.8;
+    }
+    @media only screen and (min-width: 768px){
+        padding: $style1/1.8 $style2/1.8  $style3/1.8 $style4/1.8;
+    }
+    @media only screen and (min-width: 1000px){
+        padding: $style1/1.6 $style2/1.6  $style3/1.6 $style4/1.6;
+    }
+    @media only screen and (min-width: 1200px){
+        padding: $style1/1.4 $style2/1.4  $style3/1.4 $style4/1.4;
+    }
+    @media only screen and (min-width: 1400px){
+        padding: $style1/1.2 $style2/1.2  $style3/1.2 $style4/1.2;
+    }
+    @media only screen and (min-width: 1600px){
+        padding: $style1 $style2  $style3 $style4;
+    }
+}
