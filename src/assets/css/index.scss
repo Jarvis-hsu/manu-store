@@ -10,9 +10,13 @@ html{
     width: auto;
 }
 
+ul,ol,li { 
+    list-style:none;
+}
+
 
 //间距
 .padding-0-44 {
-    @include mediaPadding(0, 4rem, 0, 4rem);
+    @include mediaPadding(0, 10rem, 0, 10rem);
 }
 

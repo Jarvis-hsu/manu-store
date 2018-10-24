@@ -20,9 +20,17 @@
                         </MenuGroup>
                     </Submenu>
                     <MenuItem name="4">装备</MenuItem>
-                    <MenuItem name="4">家居用品</MenuItem>
-                    <MenuItem name="4">纪念品</MenuItem>
-                    <MenuItem name="4">折扣区</MenuItem>
+                    <MenuItem name="5">家居用品</MenuItem>
+                    <MenuItem name="6">纪念品</MenuItem>
+                    <Submenu name="7">
+                        <template slot="title">
+                            折旧区
+                        </template>
+                        <MenuItem name="7-1">球衣</MenuItem>
+                        <MenuItem name="7-2">时尚</MenuItem>
+                        <MenuItem name="7-3">家居用品</MenuItem>
+                        <MenuItem name="7-4">纪念品</MenuItem>
+                    </Submenu>
                 </Menu>
             </Col>
         </Row>

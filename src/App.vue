@@ -3,7 +3,7 @@
         <!-- 头部 -->
         <Row class="padding-0-44 header" type="flex" align="middle">
             <Col span="2">
-                <img src="./assets/manu.png" height="80rem" width="80rem" />
+                <img src="./assets/manu.png" height="80rem" width="80rem" @click="goToHome"/>
             </Col>
             <Col span="5">
                 <span>UNITEDSTORE</span>
@@ -19,11 +19,12 @@
                 <Icon type="ios-log-out" size="30" @click="logout"/>            
            </Col>
         </Row>
+        <!-- 导航bar -->
         <Row>
             <nav-bar></nav-bar>
         </Row>
         <!-- 内容 -->
-        <Row class="padding-0-44 content">
+        <Row class="content">
             <Col>
                 <router-view />
             </Col>
@@ -51,9 +52,13 @@ export default {
             search(){
                 alert("查询");
             },
+            //首页
+            goToHome(){
+                this.$router.push('/');
+            },
             //用户
             goUser(){
-            this.$router.push('/login');
+                this.$router.push('/login');
             },
             logout(){
                 alert("退出");

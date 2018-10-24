@@ -2,28 +2,65 @@
     <div>
         <Row>
             <Col>
-                <Carousel autoplay v-model="value2" loop>
-                    <CarouselItem>
-                        <div class="carousel">1</div>
-                    </CarouselItem>
-                    <CarouselItem>
-                        <div class="carousel">2</div>
-                    </CarouselItem>
-                    <CarouselItem>
-                        <div class="carousel">3</div>
-                    </CarouselItem>
-                     <CarouselItem>
-                        <div class="carousel">4</div>
-                    </CarouselItem>
-                </Carousel>
+            <Carousel autoplay v-model="value2" loop class="homeCarousel">
+                <CarouselItem>
+                    <div class="carousel">1</div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div class="carousel">2</div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div class="carousel">3</div>
+                </CarouselItem>
+                <CarouselItem>
+                    <div class="carousel">4</div>
+                </CarouselItem>
+            </Carousel>
             </Col>
         </Row>
-
+        <Row class="padding-0-44">
+            <Col>
+                <class-bar></class-bar>
+            </Col>
+        </Row>
+        <Row class="padding-0-44">
+            <Col>
+                <div>
+                    <img class="menuImage"/>
+                </div>
+            </Col>
+        </Row>
+        <Row class="padding-0-44">
+            <Col>
+                <div>
+                    <img class="menuImage"/>
+                </div>
+            </Col>
+        </Row>
+        <Row class="padding-0-44">
+            <Col>
+                <pane-menu></pane-menu>
+            </Col>
+        </Row>
+        <Row class="padding-0-44">
+            <Col>
+                <div>
+                    <img class="menuImage"/>
+                </div>
+            </Col>
+        </Row>
     </div>
 </template>
 <script>
+import ClassBar from '../components/home/ClassBar';
+import PaneMenu from '../components/home/PaneMenu'
+
 export default {
-    data (){
+    components: {
+        ClassBar: ClassBar,
+        PaneMenu: PaneMenu
+    },
+    data () {
         return {
             value2: 0
         }
@@ -34,11 +71,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .carousel{
-        margin: 0;
-        padding: 0;
-        height: 400px;
-        width: auto;
-        background-color: rgba(255, 255, 255, 0.856);
-    }
+.homeCarousel {
+  margin: 0;
+  padding: 0;
+  height: 30rem;
+  width: auto;
+  background-color: rgba(255, 255, 255, 0.856);
+}
+
+.menuImage {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    height: 15rem;
+    background-color: #aaa;
+}
+
 </style>
