@@ -28,9 +28,12 @@
         
     }
     img {
-       &:hover {
+        &:hover {
            cursor: pointer;
        } 
+    }
+    i {
+        margin: 0 0.2rem;
     }
 }
 
@@ -39,10 +42,7 @@
     min-height: 29rem;
 }
 
-
-
-
 .footer {
-    height: 8rem;
+    height: 20rem;
     background-color: $COLOR_BLACK;
 }

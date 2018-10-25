@@ -12,37 +12,41 @@
                 <Input type="text" placeholder="搜索"></Input>
                 <Button @click="search">搜索</Button>
             </Col>
-            <Col span="1">
+            <Col span="2">
                 <Icon type="ios-contact" size="30" @click="goUser" />
-            </Col>
-            <Col span="1">
                 <Icon type="ios-log-out" size="30" @click="logout"/>            
            </Col>
         </Row>
         <!-- 导航bar -->
         <Row>
-            <nav-bar></nav-bar>
+            <Col>
+                <nav-bar></nav-bar>
+            </Col>
         </Row>
         <!-- 内容 -->
         <Row class="content">
             <Col>
-                <router-view />
+                <router-view></router-view>
             </Col>
         </Row>
         <!-- 底部 -->
-        <Row class="padding-0-44 footer">
-
+        <Row class="footer">
+            <Col>
+                <foot-bar></foot-bar>
+            </Col>
         </Row>
     </div>
 </template>
 
 <script>
 import NavBar from './components/home/NavBar';
+import FootBar from './components/home/FootBar';
 
 export default {
     name: 'App',
     components: {
-        NavBar: NavBar
+        NavBar: NavBar,
+        FootBar: FootBar
     },
     data () {
             return {

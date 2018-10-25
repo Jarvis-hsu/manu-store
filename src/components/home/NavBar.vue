@@ -2,7 +2,7 @@
     <div>
         <Row>
             <Col class="navbar">
-                <Menu mode="horizontal" :theme="theme1" active-name="1">
+                <Menu mode="horizontal" theme="dark">
                     <MenuItem name="1">球衣</MenuItem>
                     <MenuItem name="2">训练系列</MenuItem>
                     <Submenu name="3">
@@ -41,7 +41,6 @@ export default {
     name: 'NavBar',
     data () {
         return {
-            theme1: 'dark'
         }
     }
 }
