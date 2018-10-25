@@ -1,13 +1,13 @@
 <template>
     <div class="padding-0-44 footBar">
-        <Row>
-            <Col span="4" offset="2">
+        <Row type="flex" justify="center" align="middle">
+            <Col span="4">
                 <span class="largeFont">注册并享受10%折扣</span>
             </Col>
-            <Col span="6" offset="1">
+            <Col span="6">
                 <span class="midFont">抢先获取最新产品和促销信息</span>
             </col>
-            <Col span="6" offset="2">
+            <Col span="6">
                 <Input type="text" placeholder="电子邮件地址"></Input>
             </Col>
             <Col span="1">
@@ -125,14 +125,13 @@ export default {
     height: 3rem;
     color: $TEXT_COLOR_WHITE;
     background-color: $MAIN_COLOR;
-    position: relative;
     .largeFont {
         font-size: 1.3rem;
     }
     .midFont{
         font-size: 1rem;
     }
-    .ivu-row {
+    .ivu-row-flex {
         line-height: 3rem;
         button {
             height:2rem;
