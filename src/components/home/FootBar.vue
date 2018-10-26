@@ -155,6 +155,7 @@ export default {
         }
     }
     .footNav{
+        margin: 2rem;
         text-align: left;
         .ivu-col {
             span:first-child {

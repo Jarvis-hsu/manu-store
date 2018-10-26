@@ -8,13 +8,19 @@
             <Col span="5">
                 <span>UNITEDSTORE</span>
             </Col>
-            <Col span="6" offset="9" style="display:flex;align-items:center;">
+            <Col span="6" offset="6" style="display:flex;align-items:center;">
                 <Input type="text" placeholder="搜索"></Input>
                 <Button @click="search">搜索</Button>
             </Col>
-            <Col span="2">
-                <Icon type="ios-contact" size="30" @click="goUser" />
-                <Icon type="ios-log-out" size="30" @click="logout"/>            
+            <Col span="3" class="user">
+                <div v-if="true">
+                    <span style="font-size:1rem;cursor:pointer;" @click="goLogin">亲，请先登录</span>
+                </div>
+                <div v-else>
+                    <Icon type="ios-cart" size="30"/>
+                    <Icon type="ios-contact" size="30" @click="goUser" />
+                    <Icon type="ios-log-out" size="30" @click="logout"/>  
+                </div>          
            </Col>
         </Row>
         <!-- 导航bar -->
@@ -59,6 +65,9 @@ export default {
             //首页
             goToHome(){
                 this.$router.push('/');
+            },
+            goLogin(){
+                this.$router.push('/login');
             },
             //用户
             goUser(){

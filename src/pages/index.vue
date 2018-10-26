@@ -4,16 +4,24 @@
             <Col>
             <Carousel autoplay v-model="value2" loop class="homeCarousel">
                 <CarouselItem>
-                    <div class="carousel">1</div>
+                    <div class="carousel">
+                        <img src="../assets/img/aaa.jpg">
+                    </div>
                 </CarouselItem>
                 <CarouselItem>
-                    <div class="carousel">2</div>
+                    <div class="carousel">
+                        <img src="../assets/img/bbb.jpg">
+                    </div>
                 </CarouselItem>
                 <CarouselItem>
-                    <div class="carousel">3</div>
+                    <div class="carousel">
+                        <img src="../assets/img/ccc.jpg">
+                    </div>
                 </CarouselItem>
                 <CarouselItem>
-                    <div class="carousel">4</div>
+                    <div class="carousel">
+                        <img src="../assets/img/ddd.jpg">
+                    </div>
                 </CarouselItem>
             </Carousel>
             </Col>
@@ -72,19 +80,22 @@ export default {
 </script>
 <style lang="scss" scoped>
 .homeCarousel {
-  margin: 0;
-  padding: 0;
-  height: 30rem;
-  width: auto;
-  background-color: rgba(255, 255, 255, 0.856);
+    margin: 0;
+    padding: 0;
+    height: 30rem;
+    width: auto;
+    background-color: rgba(255, 255, 255, 0.856);
+    img {
+        height: 30rem;
+        width:100%;
+    }
 }
 
 .menuImage {
-    margin: 0;
-    padding: 0;
-    width: auto;
-    height: 15rem;
-    background-color: #aaa;
-}
-
+        margin: 0;
+        padding: 0;
+        width: auto;
+        height: 15rem;
+        background-color: #aaa;
+    }
 </style>

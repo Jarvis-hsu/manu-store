@@ -35,6 +35,14 @@
     i {
         margin: 0 0.2rem;
     }
+    .user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        div {
+            margin: 0 0.2rem;
+        }
+    }
 }
 
 .content {

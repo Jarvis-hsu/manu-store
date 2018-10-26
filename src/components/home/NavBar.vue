@@ -3,34 +3,47 @@
         <Row>
             <Col class="navbar">
                 <Menu mode="horizontal" theme="dark" @on-select="test">
-                    <MenuItem name="1" >球衣</MenuItem>
-                    <MenuItem name="2">训练系列</MenuItem>
-                    <Submenu name="3">
+                    <Submenu name="jersey">
+                        <template slot="title">
+                            球衣
+                        </template>
+                        <MenuItem v-for="(item, index) in jerseyList" :name="'jersey_'+index">{{item.name}}</MenuItem>
+                    </Submenu>
+                    <Submenu name="training">
+                        <template slot="title">
+                            训练系列
+                        </template>
+                        <MenuItem v-for="(item, index) in trainingList" :name="'training_'+index">{{item.name}}</MenuItem>
+                    </Submenu>
+                    <Submenu name="fashion">
                         <template slot="title">
                             时尚
                         </template>
-                        <MenuGroup title="使用">
-                            <MenuItem name="3-1">新增和启动</MenuItem>
-                            <MenuItem name="3-2">活跃分析</MenuItem>
-                            <MenuItem name="3-3">时段分析</MenuItem>
-                        </MenuGroup>
-                        <MenuGroup title="留存">
-                            <MenuItem name="3-4">用户留存</MenuItem>
-                            <MenuItem name="3-5">流失用户</MenuItem>
-                        </MenuGroup>
+                        <MenuItem v-for="(item, index) in fashionList" :name="'fashion_'+index">{{item.name}}</MenuItem>
                     </Submenu>
-                    <MenuItem name="4">装备</MenuItem>
-                    <MenuItem name="5">家居用品</MenuItem>
-                    <MenuItem name="6">纪念品</MenuItem>
+                    <Submenu name="equip">
+                        <template slot="title">
+                            装备
+                        </template>
+                        <MenuItem v-for="(item, index) in equipList" :name="'equip_'+index">{{item.name}}</MenuItem>
+                    </Submenu>
+                    <Submenu name="family">
+                        <template slot="title">
+                            家居用品
+                        </template>
+                        <MenuItem v-for="(item, index) in familyList" :name="'family_'+index">{{item.name}}</MenuItem>
+                    </Submenu>
+                    <Submenu name="memory">
+                        <template slot="title">
+                            纪念品
+                        </template>
+                        <MenuItem v-for="(item, index) in memoryList" :name="'memory_'+index">{{item.name}}</MenuItem>
+                    </Submenu>
                     <Submenu name="discount">
                         <template slot="title">
                             折旧区
                         </template>
-                        <!-- <MenuItem name="7-1">球衣</MenuItem>
-                        <MenuItem name="7-2">时尚</MenuItem>
-                        <MenuItem name="7-3">家居用品</MenuItem>
-                        <MenuItem name="7-4">纪念品</MenuItem> -->
-                        <!-- <MenuItem v-for="(item, index) in discount" name="discount_"+{{index}}>{{item.name}}</MenuItem> -->
+                        <MenuItem v-for="(item, index) in discountList" :name="'discount_'+index">{{item.name}}</MenuItem>
                     </Submenu>
                 </Menu>
             </Col>
@@ -42,7 +55,13 @@ export default {
     name: 'NavBar',
     data () {
         return {
-            discount:[]
+            jerseyList:[],
+            trainingList:[],
+            fashionList:[],
+            equipList:[],
+            familyList:[],
+            memoryList:[],
+            discountList:[],
         }
     },
     created(){
@@ -53,20 +72,51 @@ export default {
             this.$router.push('/shop');
         },
         getMenuData(){
+            var _this = this;
             this.$http({
                 method: 'get',
                 url: '../../../static/home/menu.json',
                 transformResponse: [function(data){
-                    // console.log(JSON.stringify(data));
-                    this.setMenu(data);
+                    //处理数据
+                    _this.setMenu(JSON.parse(data));
+                    // console.log(JSON.parse(data));
                 }]
             })
         },
         setMenu(menuData){
-            console.log(menuData);
-
-            // var data = JSON.parse(menuData);
-            // console.log(data);
+            if(menuData != undefined || menuData != null){
+                for(var i=0; i<menuData.length; i++){
+                    if(menuData[i].type=="jersey")
+                    {
+                        this.jerseyList = menuData[i].list;
+                    }
+                    if(menuData[i].type=="training")
+                    {
+                        this.trainingList = menuData[i].list;
+                    }
+                    if(menuData[i].type=="fashion")
+                    {
+                        this.fashionList = menuData[i].list;
+                    }
+                    if(menuData[i].type=="equip")
+                    {
+                        this.equipList = menuData[i].list;
+                    }
+                    if(menuData[i].type=="family")
+                    {
+                        this.familyList = menuData[i].list;
+                    }
+                    if(menuData[i].type=="memory")
+                    {
+                        this.memoryList = menuData[i].list;
+                    }
+                    if(menuData[i].type=="discount")
+                    {
+                        this.discountList = menuData[i].list;
+                    }
+                }
+            }
+            
         }
 
     }

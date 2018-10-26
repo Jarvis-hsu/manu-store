@@ -18,7 +18,7 @@
         <Row class="padding-0-44">
             <Col>
                 <Sider>
-                    <Menu active-name="1-2" theme="light" width="auto">
+                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1','2','3']">
                         <Submenu name="1">
                             <template slot="title">
                                 类别
@@ -45,8 +45,8 @@
                 </Sider>
             </Col>
         </Row>
-        <Row class="padding-0-44">
-            <Col>
+        <Row class="padding-0-44 page" type="flex" justify="center">
+            <Col span="12" offset="4">
                 <Page :total="50" show-elevator />
             </Col>
         </Row>
@@ -71,6 +71,9 @@ export default {
     min-height: 50rem;
     .breadCrumb {
         height: 4rem;
+    }
+    .page {
+        margin: 3rem 0;
     }
 }
 
