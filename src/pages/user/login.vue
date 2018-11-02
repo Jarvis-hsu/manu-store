@@ -5,7 +5,7 @@
                 <h2>登录</h2>
                 <Row type="flex" align="middle">
                     <Col span="4">
-                        <span>用户名：</span>
+                        <span><i>＊</i>用户名：</span>
                     </Col>
                     <Col span="18">
                         <Input type="text" v-model="username"></Input>
@@ -13,7 +13,7 @@
                 </Row>
                 <Row type="flex" align="middle">
                     <Col span="4">
-                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+                        <span><i>＊</i>密&nbsp;&nbsp;&nbsp;码：</span>
                     </Col>
                     <Col span="18">
                         <Input type="password" v-model="passwd"></Input>
@@ -41,7 +41,27 @@ export default {
     },
     methods: {
         handleSubmit () {
-           alert("commit");
+            var _this = this;
+            if(_this.validate()){
+                //登录成功
+                sessionStorage.setItem("username", _this.username);
+                this.$router.push("/");
+            }
+        },
+        //验证
+        validate(){
+            var _this = this;
+            if(_this.username == ""){
+                alert("用户名不能为空");
+                return false
+            }
+            else if(_this.passwd == ""){
+                alert("密码不能为空");
+                return false;
+           }
+           else{
+               return true;
+           }
         }
     }
 }
@@ -53,6 +73,9 @@ export default {
     height: 20rem;
     span {
         font-size: 0.8rem;
+        i {
+            color: red;
+        }
     }
     .ivu-row-flex {
         margin: 1.5rem 0;

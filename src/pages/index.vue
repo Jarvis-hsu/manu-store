@@ -64,6 +64,8 @@ import ClassBar from '../components/home/ClassBar';
 import PaneMenu from '../components/home/PaneMenu'
 
 export default {
+    name: 'index',
+	inject: ['reload'],
     components: {
         ClassBar: ClassBar,
         PaneMenu: PaneMenu

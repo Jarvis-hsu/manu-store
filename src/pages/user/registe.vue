@@ -5,6 +5,14 @@
                 <h2>欢迎加入曼联</h2>
                 <Row type="flex" align="middle">
                     <Col span="4">
+                        <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</span>
+                    </Col>
+                    <Col span="18">
+                        <Input type="text" v-model="username"></Input>
+                    </Col>
+                </Row>
+                <Row type="flex" align="middle">
+                    <Col span="4">
                         <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
                     </Col>
                     <Col span="18">
@@ -21,10 +29,10 @@
                 </Row>
                 <Row type="flex" align="middle">
                     <Col span="4">
-                        <span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</span>
+                        <span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
                     </Col>
                     <Col span="18">
-                        <Input type="text" v-model="age" number></Input>
+                        <Input type="text" v-model="email"></Input>
                     </Col>
                 </Row>
                 <Row type="flex" justify="center" align="middle">
@@ -44,9 +52,10 @@
 export default {
     data () {
         return {
+            username: '',
             passwd: '',
             passwdCheck: '',
-            age: ''
+            email:''
         }
     },
     methods: {

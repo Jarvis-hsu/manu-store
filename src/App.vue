@@ -13,7 +13,7 @@
                 <Button @click="search">搜索</Button>
             </Col>
             <Col span="3" class="user">
-                <div v-if="true">
+                <div v-if="user==''||user==null">
                     <span style="font-size:1rem;cursor:pointer;" @click="goLogin">亲，请先登录</span>
                 </div>
                 <div v-else>
@@ -32,7 +32,7 @@
         <!-- 内容 -->
         <Row class="content">
             <Col>
-                <router-view></router-view>
+                <router-view v-if="isRouterAlive"></router-view>
             </Col>
         </Row>
         <!-- 底部 -->
@@ -54,29 +54,45 @@ export default {
         NavBar: NavBar,
         FootBar: FootBar
     },
-    data () {
-            return {
-            }
-        },
-        methods: {
-            search(){
-                alert("查询");
-            },
-            //首页
-            goToHome(){
-                this.$router.push('/');
-            },
-            goLogin(){
-                this.$router.push('/login');
-            },
-            //用户
-            goUser(){
-                this.$router.push('/login');
-            },
-            logout(){
-                alert("退出");
-            }
+    provide(){
+        return {
+            reload: this.reload()
         }
+    },
+    data(){
+        return {
+            user: sessionStorage.getItem("username"),
+            isRouterAlive: true
+        }
+    },
+    methods: {
+        search(){
+            alert("查询");
+        },
+        //首页
+        goToHome(){
+            this.$router.push('/');
+        },
+        goLogin(){
+            this.$router.push('/login');
+        },
+        //用户
+        goUser(){
+            this.$router.push('/login');
+        },
+        //注销
+        logout(){
+            sessionStorage.clear();
+            // this.reload();
+        },
+        reload(){
+            console.log("lkkkkkk");
+            this.isRouterAlive = false;
+            this.$nextTick(function (){
+                this.isRouterAlive = true
+            })
+        }
+    }
     
 }
 </script>
