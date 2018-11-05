@@ -17,7 +17,7 @@
                     <span style="font-size:1rem;cursor:pointer;" @click="goLogin">亲，请先登录</span>
                 </div>
                 <div v-else>
-                    <Icon type="ios-cart" size="30"/>
+                    <Icon type="ios-cart" size="30" @click="goCart"/>
                     <Icon type="ios-contact" size="30" @click="goUser" />
                     <Icon type="ios-log-out" size="30" @click="logout"/>  
                 </div>          
@@ -32,7 +32,7 @@
         <!-- 内容 -->
         <Row class="content">
             <Col>
-                <router-view v-if="isRouterAlive"></router-view>
+                <router-view></router-view>
             </Col>
         </Row>
         <!-- 底部 -->
@@ -54,11 +54,6 @@ export default {
         NavBar: NavBar,
         FootBar: FootBar
     },
-    provide(){
-        return {
-            reload: this.reload()
-        }
-    },
     data(){
         return {
             user: sessionStorage.getItem("username"),
@@ -73,6 +68,7 @@ export default {
         goToHome(){
             this.$router.push('/');
         },
+        //登录
         goLogin(){
             this.$router.push('/login');
         },
@@ -83,15 +79,20 @@ export default {
         //注销
         logout(){
             sessionStorage.clear();
-            // this.reload();
+            this.$router.push('/login');
+            location.reload();
         },
-        reload(){
-            console.log("lkkkkkk");
-            this.isRouterAlive = false;
-            this.$nextTick(function (){
-                this.isRouterAlive = true
-            })
+        //购物车
+        goCart(){
+            this.$router.push('/shopCart');
         }
+        // reload(){
+        //     console.log("lkkkkkk");
+        //     this.isRouterAlive = false;
+        //     this.$nextTick(function(){
+        //         this.isRouterAlive = true
+        //     })
+        // }
     }
     
 }

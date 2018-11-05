@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Row type="flex" justify="center" align="middle" class="login">
+        <Row type="flex" justify="center" align="middle" class="login" v-if="username==null||username==''">
             <Col span="6">
                 <h2>登录</h2>
                 <Row type="flex" align="middle">
@@ -8,7 +8,7 @@
                         <span><i>＊</i>用户名：</span>
                     </Col>
                     <Col span="18">
-                        <Input type="text" v-model="username"></Input>
+                        <Input type="text" v-model="loginName"></Input>
                     </Col>
                 </Row>
                 <Row type="flex" align="middle">
@@ -29,14 +29,34 @@
                 </Row>
             </Col>
         </Row>
+        <Row class="padding-0-44" v-else>
+            <Col span="4">
+                <Sider>
+                    <Menu active-name="userInfo" theme="light" width="auto" @on-select="showInfo">
+                        <MenuItem name="userInfo">我的信息</MenuItem>
+                        <MenuItem name="shopCart">我的购物车</MenuItem>
+                        <MenuItem name="buyed">已买到的商品</MenuItem>
+                    </Menu>
+                </Sider>
+            </Col>
+            <Col span="20">
+                <router-view></router-view>
+            </Col>
+        </Row>
     </div>
 </template>
 <script>
 export default {
     data () {
         return {
-            username:'',
+            username: sessionStorage.getItem("username"),
+            loginName: '',
             passwd: ''   
+        }
+    },
+    mounted(){
+        if(this.username){
+            this.showInfo();
         }
     },
     methods: {
@@ -44,14 +64,15 @@ export default {
             var _this = this;
             if(_this.validate()){
                 //登录成功
-                sessionStorage.setItem("username", _this.username);
+                sessionStorage.setItem("username", _this.loginName);
                 this.$router.push("/");
+                location.reload();
             }
         },
         //验证
         validate(){
             var _this = this;
-            if(_this.username == ""){
+            if(_this.loginName == ""){
                 alert("用户名不能为空");
                 return false
             }
@@ -62,6 +83,18 @@ export default {
            else{
                return true;
            }
+        },
+        //信息
+        showInfo(name){
+            if(name == "shopCart"){
+                this.$router.push('/login/shopCart');
+            }
+            else if(name == "buyed"){
+                this.$router.push('/login/buyed');
+            }
+            else{
+                this.$router.push('/login/userInfo');
+            }
         }
     }
 }

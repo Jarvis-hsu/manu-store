@@ -65,7 +65,6 @@ import PaneMenu from '../components/home/PaneMenu'
 
 export default {
     name: 'index',
-	inject: ['reload'],
     components: {
         ClassBar: ClassBar,
         PaneMenu: PaneMenu
@@ -74,6 +73,9 @@ export default {
         return {
             value2: 0
         }
+    },
+    created(){
+        
     },
     methods: {
 
