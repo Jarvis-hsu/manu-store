@@ -16,13 +16,19 @@ const routes = [
         {
           path: '/home',
           name: 'home',
-          component: home
+          component: home,
+          meta: {
+            reload: true
+          }
         },
         //登录
         {
           path: '/login',
           name: 'login',
           component: login,
+          meta: {
+            reload: true
+          },
           children: [
             {
               //用户信息

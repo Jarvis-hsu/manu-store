@@ -10,22 +10,22 @@
             <Col span="8" offset="1">
                 <Breadcrumb style="text-align:left;">
                     <BreadcrumbItem to="/">主页</BreadcrumbItem>
-                    <BreadcrumbItem>Components</BreadcrumbItem>
-                    <BreadcrumbItem>Layout</BreadcrumbItem>
+                    <BreadcrumbItem to="/shop">商店</BreadcrumbItem>
+                    <BreadcrumbItem>{{navType}}</BreadcrumbItem>
                 </Breadcrumb>
             </Col>
         </Row>
         <Row class="padding-0-44">
             <Col>
                 <Sider>
-                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1','2','3']">
+                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
                         <Submenu name="1">
                             <template slot="title">
                                 类别
                             </template>
-                            <MenuItem name="1-1">Option 1</MenuItem>
-                            <MenuItem name="1-2">Option 2</MenuItem>
-                            <MenuItem name="1-3">Option 3</MenuItem>
+                            <MenuItem v-for="(item, index) in classList" :name="'1-'+index">{{item.name}}</MenuItem>
+                            <!-- <MenuItem name="1-2">Option 2</MenuItem>
+                            <MenuItem name="1-3">Option 3</MenuItem> -->
                         </Submenu>
                         <Submenu name="2">
                             <template slot="title">
@@ -61,7 +61,28 @@ export default {
     },
     data (){
         return {
-
+            navType: '',
+            navName: {
+                "jersey":"球衣",
+                "training":"训练系列",
+                "fashion": "时尚", 
+                "equip": "装备",
+                "family": "家居用品",
+                "memory": "纪念品",
+                "discount": "折扣区"
+            },
+            classList: []
+        }
+    },
+    mounted(){
+        this.navType = this.getNavType();
+        this.classList = this.$store.state.navList;
+        
+    },
+    methods: {
+        getNavType(){
+            var type = this.$store.state.navType;
+            return this.navName[type];
         }
     }
 }

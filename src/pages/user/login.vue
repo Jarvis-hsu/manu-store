@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Row type="flex" justify="center" align="middle" class="login" v-if="username==null||username==''">
+        <Row type="flex" justify="center" align="middle" class="login" v-if="username==''">
             <Col span="6">
                 <h2>登录</h2>
                 <Row type="flex" align="middle">
@@ -47,9 +47,10 @@
 </template>
 <script>
 export default {
+    inject: ['reload'],
     data () {
         return {
-            username: sessionStorage.getItem("username"),
+            username: this.$store.state.username,
             loginName: '',
             passwd: ''   
         }
@@ -65,8 +66,8 @@ export default {
             if(_this.validate()){
                 //登录成功
                 sessionStorage.setItem("username", _this.loginName);
+                this.$store.commit("setUserName", _this.loginName);
                 this.$router.push("/");
-                location.reload();
             }
         },
         //验证
@@ -95,7 +96,7 @@ export default {
             else{
                 this.$router.push('/login/userInfo');
             }
-        }
+        },
     }
 }
 </script>

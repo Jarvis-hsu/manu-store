@@ -13,7 +13,7 @@
                 <Button @click="search">搜索</Button>
             </Col>
             <Col span="3" class="user">
-                <div v-if="user==''||user==null">
+                <div v-if="user==''">
                     <span style="font-size:1rem;cursor:pointer;" @click="goLogin">亲，请先登录</span>
                 </div>
                 <div v-else>
@@ -32,7 +32,7 @@
         <!-- 内容 -->
         <Row class="content">
             <Col>
-                <router-view></router-view>
+                <router-view v-if="isRouterAlive"></router-view>
             </Col>
         </Row>
         <!-- 底部 -->
@@ -54,11 +54,19 @@ export default {
         NavBar: NavBar,
         FootBar: FootBar
     },
+    provide(){
+        return {
+            reload: this.reload
+        }
+    },
     data(){
         return {
-            user: sessionStorage.getItem("username"),
+            user: "",
             isRouterAlive: true
         }
+    },
+    watch: {
+        '$route': 'getInfo'
     },
     methods: {
         search(){
@@ -79,20 +87,23 @@ export default {
         //注销
         logout(){
             sessionStorage.clear();
+            this.$store.commit("setUserName", "");
             this.$router.push('/login');
-            location.reload();
         },
         //购物车
         goCart(){
             this.$router.push('/shopCart');
+        },
+        reload(){
+            this.isRouterAlive = false;
+            this.$nextTick(function(){
+                this.isRouterAlive = true
+            })
+        },
+        getInfo(){
+            this.user = this.$store.state.username;
+            this.reload();
         }
-        // reload(){
-        //     console.log("lkkkkkk");
-        //     this.isRouterAlive = false;
-        //     this.$nextTick(function(){
-        //         this.isRouterAlive = true
-        //     })
-        // }
     }
     
 }

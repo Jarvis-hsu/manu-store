@@ -74,11 +74,11 @@ export default {
             value2: 0
         }
     },
-    created(){
-        
+    mounted(){
+
     },
     methods: {
-
+       
     }
 }
 </script>

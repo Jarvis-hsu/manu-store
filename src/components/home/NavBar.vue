@@ -2,7 +2,7 @@
     <div>
         <Row>
             <Col class="navbar">
-                <Menu mode="horizontal" theme="dark" @on-select="test">
+                <Menu mode="horizontal" theme="dark" @on-select="shopInit">
                     <Submenu name="jersey">
                         <template slot="title">
                             球衣
@@ -53,6 +53,7 @@
 <script>
 export default {
     name: 'NavBar',
+    inject: ['reload'],
     data () {
         return {
             jerseyList:[],
@@ -68,8 +69,22 @@ export default {
         this.getMenuData();
     },
     methods: {
-        test(name){
+        shopInit(name){
+            var list = [];
+            var type = name.split("_")[0];
+            this.$store.commit("setNavType", type);
+
+            if(type == "jersey") list = this.jerseyList;
+            if(type == "training") list = this.trainingList;
+            if(type == "fashion") list = this.fashionList;
+            if(type == "equip") list = this.equipList;
+            if(type == "family") list = this.familyList;
+            if(type == "memory") list = this.memoryList;
+            if(type == "discount") list = this.discountList;
+
+            this.$store.commit("setNavList", list);
             this.$router.push('/shop');
+            this.reload();
         },
         getMenuData(){
             var _this = this;
