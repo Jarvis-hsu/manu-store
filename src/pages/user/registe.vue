@@ -5,7 +5,7 @@
                 <h2>欢迎加入曼联</h2>
                 <Row type="flex" align="middle">
                     <Col span="4">
-                        <span>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</span>
+                        <span><i>＊</i>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</span>
                     </Col>
                     <Col span="18">
                         <Input type="text" v-model="username"></Input>
@@ -13,7 +13,7 @@
                 </Row>
                 <Row type="flex" align="middle">
                     <Col span="4">
-                        <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
+                        <span><i>＊</i>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
                     </Col>
                     <Col span="18">
                         <Input type="password" v-model="passwd"></Input>
@@ -21,7 +21,7 @@
                 </Row>
                 <Row type="flex" align="middle">
                     <Col span="4">
-                        <span>确认密码：</span>
+                        <span><i>＊</i>确认密码：</span>
                     </Col>
                     <Col span="18">
                         <Input type="password" v-model="passwdCheck"></Input>
@@ -29,7 +29,7 @@
                 </Row>
                 <Row type="flex" align="middle">
                     <Col span="4">
-                        <span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
+                        <span>&nbsp;&nbsp;邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
                     </Col>
                     <Col span="18">
                         <Input type="text" v-model="email"></Input>
@@ -59,11 +59,67 @@ export default {
         }
     },
     methods: {
-        handleSubmit (name) {
-            alert("committtt");
+        async handleSubmit () {
+            var _this = this;
+
+            if(this.valicate()){
+                var res =await this.$http('../../../static/user/user.json');
+                for(var i=0; i<res.data.length; i++){                
+                    if(res.data[i].username == _this.username){
+                        alert("用户名已存在");
+                        break;
+                    }
+                }
+            }
+            
         },
-        handleReset (name) {
-            alert("reset");
+        valicate(){
+            var _this = this;
+            var isPass = true;
+            var valiData = [
+                {
+                    "val": _this.username,
+                    "cn":"用户名"
+                },
+                {
+                    "val": _this.passwd,
+                    "cn":"密码"
+                },
+                {
+                    "val": _this.passwdCheck,
+                    "cn":"确认密码"
+                },
+            ];
+            //判空
+            for(var j=0, len=valiData.length; j<len; j++){
+                if(this.isEmpty(valiData[j].val)){
+                    isPass = false;
+                    alert(valiData[j].cn+"不可为空");
+                    break;
+                }
+            }
+            //密码再次验证
+            if(_this.passwd != _this.passwdCheck){
+                alert("两次输入的密码不一致");
+                isPass = false;
+            }
+
+            return isPass;
+        },
+        
+        isEmpty(data){
+            var isEmpty = false;
+            if(data == ""|| data == null){
+                isEmpty = true; 
+            }
+            return isEmpty;
+        },
+
+        handleReset (){
+            this.username = '';
+            this.passwd = '';
+            this.passwdCheck = '';
+            this.email = '';
         }
     }
 }
@@ -75,6 +131,9 @@ export default {
     height: 20rem;
     span {
         font-size: 0.8rem;
+        i {
+            color: red;
+        }
     }
     .ivu-row-flex {
         margin: 1.5rem 0;

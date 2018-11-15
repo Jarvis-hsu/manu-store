@@ -61,13 +61,29 @@ export default {
         }
     },
     methods: {
-        handleSubmit () {
+        async handleSubmit () {
             var _this = this;
+            var isSuccess = false;
             if(_this.validate()){
-                //登录成功
-                sessionStorage.setItem("username", _this.loginName);
-                this.$store.commit("setUserName", _this.loginName);
-                this.$router.push("/");
+                var res =await this.$http('../../../static/user/user.json').catch(function(error){
+                    console.error(error.message);
+                });
+                for(var i=0; i<res.data.length; i++){                
+                    if(res.data[i].username == _this.loginName&&res.data[i].password == _this.passwd){
+                        isSuccess = true;
+                        break;
+                    }
+                }
+                if(isSuccess){
+                    // //登录成功
+                    sessionStorage.setItem("username", _this.loginName);
+                    this.$store.commit("setUserName", _this.loginName);
+                    this.$router.push("/");
+                }else{
+                    alert("用户名或密码不正确");
+                }
+
+                
             }
         },
         //验证
