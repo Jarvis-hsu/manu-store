@@ -63,7 +63,7 @@ export default {
             var _this = this;
 
             if(this.valicate()){
-                var res =await this.$http('../../../static/user/user.json');
+                var res =await this.$http('../../../static/data/user/user.json');
                 for(var i=0; i<res.data.length; i++){                
                     if(res.data[i].username == _this.username){
                         alert("用户名已存在");

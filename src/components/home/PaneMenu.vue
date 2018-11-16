@@ -2,7 +2,8 @@
     <div class="paneMenu">
         <ul class="menuList">
             <li v-for="(item,index) in menuList" class="pane">
-                <div class="menus"  @mouseenter="showOrHide(index)" >
+                <div class="menus"  @mouseenter="showOrHide(index)">
+                    <img :src="item.imgUrl"/>
                     <Button size="large" @click="goToBuy">{{item.name}}</Button>
                 </div>
                 <div :id="index" class="cover" v-show="item.isShow" @mouseleave="showOrHide(index)" @click="goToBuy">
@@ -18,12 +19,12 @@ export default {
     data () {
         return {
             menuList: [
-                {isShow: false, name: '18/19赛季曼联第三球衣' },
-                {isShow: false, name: 'NEW ERA' },
-                {isShow: false, name: '18/19训练系列' },
-                {isShow: false, name: '曼联赛前上衣' },
-                {isShow: false, name: 'NEW ERA帽子' },
-                {isShow: false, name: '1968年欧洲杯冠军系列' },
+                {isShow: false, name: '18/19赛季曼联第三球衣', imgUrl: '../../../static/img/ggg.jpg'},
+                {isShow: false, name: 'NEW ERA' , imgUrl: '../../../static/img/fff.jpg'},
+                {isShow: false, name: '18/19训练系列' , imgUrl: '../../../static/img/eee.jpg'},
+                {isShow: false, name: '曼联赛前上衣' , imgUrl: '../../../static/img/fff.jpg'},
+                {isShow: false, name: 'NEW ERA帽子' , imgUrl: '../../../static/img/eee.jpg'},
+                {isShow: false, name: '1968年欧洲杯冠军系列' , imgUrl: '../../../static/img/ggg.jpg'},
             ]
         }
     },
@@ -33,7 +34,7 @@ export default {
             this.menuList[curId].isShow = !this.menuList[curId].isShow;
         },
         goToBuy(){
-            alert("buybuy");
+            this.$router.push('/shop');
         }
     }
 }
@@ -66,12 +67,15 @@ export default {
             .menus {
                 height: 30rem;
                 width: 30rem;
-                background-color: #aaa;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
                 button {
                     color: $TEXT_COLOR_WHITE;
                     background-color: $MAIN_COLOR;
                     position: relative;
-                    top: 85%;
+                    top: -20%;
                     z-index: 999;
                     border-radius: unset;
                 }

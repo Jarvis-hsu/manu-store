@@ -65,7 +65,7 @@ export default {
             var _this = this;
             var isSuccess = false;
             if(_this.validate()){
-                var res =await this.$http('../../../static/user/user.json').catch(function(error){
+                var res =await this.$http('../../../static/data/user/user.json').catch(function(error){
                     console.error(error.message);
                 });
                 for(var i=0; i<res.data.length; i++){                

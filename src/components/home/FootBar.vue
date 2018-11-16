@@ -8,7 +8,7 @@
                 <span class="midFont">抢先获取最新产品和促销信息</span>
             </col>
             <Col span="6">
-                <Input type="text" placeholder="电子邮件地址"></Input>
+                <Input type="text" placeholder="电子邮件地址" v-model="email"></Input>
             </Col>
             <Col span="1">
                 <Button @click="commitEmail">提交</Button>
@@ -77,6 +77,7 @@ export default {
     name: 'FootBar',
     data () {
         return {
+            email: '',
             user:[
                 {name:'我的帐户'},
                 {name:'跟踪我的订单'},
@@ -113,7 +114,15 @@ export default {
     },
     methods: {
         commitEmail(){
-            alert("commit email!");
+            //邮件地址格式
+            var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            var email = this.email;
+            if(reg.test(email)){
+                alert("电子邮件已提交");
+            }else{
+                alert("邮箱格式不正确");
+            }
+            
         }
     }
 }

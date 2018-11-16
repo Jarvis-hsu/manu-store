@@ -5,22 +5,22 @@
             <Carousel autoplay v-model="value2" loop class="homeCarousel">
                 <CarouselItem>
                     <div class="carousel">
-                        <img src="../assets/img/aaa.jpg">
+                        <img src="../../static/img/aaa.jpg"/>
                     </div>
                 </CarouselItem>
                 <CarouselItem>
                     <div class="carousel">
-                        <img src="../assets/img/bbb.jpg">
+                        <img src="../../static/img/bbb.jpg"/>
                     </div>
                 </CarouselItem>
                 <CarouselItem>
                     <div class="carousel">
-                        <img src="../assets/img/ccc.jpg">
+                        <img src="../../static/img/ccc.jpg"/>
                     </div>
                 </CarouselItem>
                 <CarouselItem>
                     <div class="carousel">
-                        <img src="../assets/img/ddd.jpg">
+                        <img src="../../static/img/ddd.jpg"/>
                     </div>
                 </CarouselItem>
             </Carousel>
@@ -31,17 +31,17 @@
                 <class-bar></class-bar>
             </Col>
         </Row>
-        <Row class="padding-0-44">
+        <Row class="padding-0-44 padding-2-0">
             <Col>
                 <div>
-                    <img class="menuImage"/>
+                    <img class="menuImage" src="../../static/img/bbb.jpg"/>
                 </div>
             </Col>
         </Row>
-        <Row class="padding-0-44">
+        <Row class="padding-0-44 padding-2-0">
             <Col>
                 <div>
-                    <img class="menuImage"/>
+                    <img class="menuImage" src="../../static/img/ccc.jpg"/>
                 </div>
             </Col>
         </Row>
@@ -50,10 +50,10 @@
                 <pane-menu></pane-menu>
             </Col>
         </Row>
-        <Row class="padding-0-44">
+        <Row class="padding-0-44 padding-2-0">
             <Col>
                 <div>
-                    <img class="menuImage"/>
+                    <img class="menuImage" src="../../static/img/ddd.jpg"/>
                 </div>
             </Col>
         </Row>
@@ -98,8 +98,8 @@ export default {
 .menuImage {
         margin: 0;
         padding: 0;
-        width: auto;
-        height: 15rem;
+        width: 30rem;
+        height: 20rem;
         background-color: #aaa;
     }
 </style>

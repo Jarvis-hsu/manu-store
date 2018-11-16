@@ -90,7 +90,7 @@ export default {
             var _this = this;
             this.$http({
                 method: 'get',
-                url: '../../../static/home/menu.json',
+                url: '../../../static/data/home/menu.json',
                 transformResponse: [function(data){
                     //处理数据
                     _this.setMenu(JSON.parse(data));

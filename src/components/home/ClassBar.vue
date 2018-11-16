@@ -4,16 +4,19 @@
             <TabPane label="主场球衣">
                 <Carousel v-model="value1" loop class="BarCarousel">
                         <CarouselItem>
-                            <div class="demo-carousel">1</div>
+                            <div class="classCarousel">
+                                <img src="../../../static/img/fff.jpg"/>
+                            </div>
                         </CarouselItem>
                         <CarouselItem>
-                            <div class="demo-carousel">2</div>
+                            <div class="classCarousel">
+                                <img src="../../../static/img/ggg.jpg"/>
+                            </div>
                         </CarouselItem>
                         <CarouselItem>
-                            <div class="demo-carousel">3</div>
-                        </CarouselItem>
-                        <CarouselItem>
-                            <div class="demo-carousel">4</div>
+                            <div class="classCarousel">
+                                <img src="../../../static/img/ccc.jpg"/>
+                            </div>
                         </CarouselItem>
                     </Carousel>
             </TabPane>
@@ -44,6 +47,17 @@ export default {
     padding: 0;
     height: 15rem;
     width: auto;
+    .classCarousel{
+        margin: 0;
+        padding: 0;
+        height: 30rem;
+        width: auto;
+        background-color: rgba(255, 255, 255, 0.856);
+        img {
+            height: 100%;
+            width:100%;
+        }
+    }
 }
 
 .ivu-tabs-nav-scroll {

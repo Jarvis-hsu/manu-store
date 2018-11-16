@@ -2,13 +2,11 @@
     <div id="app">
         <!-- 头部 -->
         <Row class="padding-0-44 header" type="flex" align="middle">
-            <Col span="2">
-                <img src="./assets/manu.png" height="80rem" width="80rem" @click="goToHome"/>
-            </Col>
-            <Col span="5">
+            <Col span="7" class="logo">
+                <img src="../static/img/manu.png" height="80rem" width="80rem" @click="goToHome"/>
                 <span>UNITEDSTORE</span>
             </Col>
-            <Col span="6" offset="6" style="display:flex;align-items:center;">
+            <Col span="6" offset="8" style="display:flex;align-items:center;">
                 <Input type="text" placeholder="搜索"></Input>
                 <Button @click="search">搜索</Button>
             </Col>
