@@ -4,7 +4,7 @@
             <li v-for="(item,index) in menuList" class="pane">
                 <div class="menus"  @mouseenter="showOrHide(index)">
                     <img :src="item.imgUrl"/>
-                    <Button size="large" @click="goToBuy">{{item.name}}</Button>
+                    <Button :class="{focus:item.isShow}" size="large" @click="goToBuy">{{item.name}}</Button>
                 </div>
                 <div :id="index" class="cover" v-show="item.isShow" @mouseleave="showOrHide(index)" @click="goToBuy">
                     <span>立刻选购</span>
@@ -78,11 +78,16 @@ export default {
                     top: -20%;
                     z-index: 999;
                     border-radius: unset;
-                }
-                &:hover > button {
+                    &:hover {
                         background-color: $COLOR_FFF;
                         color: $MAIN_COLOR ;
                         border-color: $MAIN_COLOR;
+                    }
+                }
+                .focus {
+                    background-color: $COLOR_FFF;
+                    color: $MAIN_COLOR ;
+                    border-color: $MAIN_COLOR;
                 }
             }
             .cover {

@@ -118,6 +118,7 @@ export default {
             var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
             var email = this.email;
             if(reg.test(email)){
+                this.email = '';
                 alert("电子邮件已提交");
             }else{
                 alert("邮箱格式不正确");
