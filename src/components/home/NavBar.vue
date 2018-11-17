@@ -136,13 +136,25 @@ export default {
 
     }
 }
-</script>
+</script>                   
 <style scoped lang="scss">
-    .ivu-menu{
-        display: flex;
-        justify-content: center;
-        li {
-            padding: 0 3rem;
+@import '../../assets/css/public/var.scss';
+
+.ivu-menu{
+    display: flex;
+    justify-content: center;
+    li {
+        padding: 0 3rem;
+    }
+    .ivu-menu-item {
+        &:hover {
+            background: $MAIN_COLOR !important;
+            color: $COLOR_FFF;
         }
     }
+    .ivu-menu-item-selected {
+        color: $COLOR_FFF !important;
+        background: $MAIN_SELECT_COLOR;
+    }
+}
 </style>

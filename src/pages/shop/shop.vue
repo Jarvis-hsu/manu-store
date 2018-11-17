@@ -88,6 +88,8 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '../../assets/css/public/var.scss';
+
 .shop {
     min-height: 50rem;
     .breadCrumb {
@@ -95,6 +97,18 @@ export default {
     }
     .page {
         margin: 3rem 0;
+    }
+    .ivu-menu {
+        .ivu-menu-item {
+            &:hover {
+                background: $MAIN_COLOR !important;
+                color: $COLOR_FFF;
+            }
+        }
+        .ivu-menu-item-selected {
+        color: $COLOR_FFF !important;
+        background: $MAIN_SELECT_COLOR !important;
+        }
     }
 }
 
