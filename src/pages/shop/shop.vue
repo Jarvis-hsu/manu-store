@@ -16,7 +16,7 @@
             </Col>
         </Row>
         <Row class="padding-0-44">
-            <Col>
+            <Col span="4">
                 <Sider>
                     <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
                         <Submenu name="1">
@@ -44,6 +44,9 @@
                     </Menu>
                 </Sider>
             </Col>
+            <Col span="20">
+                <product></product>
+            </Col>
         </Row>
         <Row class="padding-0-44 page" type="flex" justify="center">
             <Col span="12" offset="4">
@@ -53,11 +56,13 @@
     </div>
 </template>
 <script>
-import QuickSearch from '../../components/shop/QuickSearch'
+import QuickSearch from '../../components/shop/QuickSearch';
+import Product from '../../components/shop/Product';
 
 export default {
     components: {
-        QuickSearch: QuickSearch
+        QuickSearch: QuickSearch,
+        Product : Product
     },
     data (){
         return {
