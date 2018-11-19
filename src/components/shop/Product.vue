@@ -18,28 +18,28 @@ export default {
         return {
             productList:[
                 {
-                    name: 'aaa',
-                    type: '',
-                    price: 0,
-                    imgUrl: ''
+                    name: '曼联主场球衣 2018-19',
+                    type: 'home',
+                    price: '¥299',
+                    imgUrl: '../../static/img/clo-4.jpg'
                 },
                 {
-                    name: 'bbb',
-                    type: '',
-                    price: 1,
-                    imgUrl: ''
+                    name: '曼联主场球衣 2018-19',
+                    type: 'away',
+                    price: '¥399',
+                    imgUrl: '../../static/img/clo-1.jpg'
                 },
                 {
-                    name: 'ccc',
-                    type: '',
-                    price: 2,
-                    imgUrl: ''
+                    name: '曼联主场球衣 2018-19',
+                    type: 'home',
+                    price: '¥199',
+                    imgUrl: '../../static/img/clo-2.jpg'
                 },
                 {
-                    name: 'ddd',
-                    type: '',
-                    price: 3,
-                    imgUrl: ''
+                    name: '曼联主场球衣 2018-19',
+                    type: 'away',
+                    price: '¥299',
+                    imgUrl: '../../static/img/clo-3.jpg'
                 }
             ]
         }
@@ -52,6 +52,8 @@ export default {
     align-items: center;
     justify-content: center;
     .prodList {
+        width: 90%;
+        height: 90%;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
@@ -59,15 +61,23 @@ export default {
             margin: 2rem;
             padding: 0;
             width: 18rem;
-            height: 18rem;
-            background: gray;
-            display: flex;
+            height: 23rem;
+            display: inline-flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
             .prodImg{
                 width:100%;
-                height: 50%;
+                height: 80%;
+            }
+            span{
+                font-weight: bold;
+                margin: 0.5rem;
+            }
+            span:last-child {
+                font-size: 1rem;
+            }
+            &:hover {
+                cursor: pointer;
             }
     
         }

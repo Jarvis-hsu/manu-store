@@ -65,7 +65,7 @@ export default {
             display: inline-flex;
             justify-content: center;
             .menus {
-                height: 30rem;
+                height: 25rem;
                 width: 30rem;
                 img{
                     width: 100%;
@@ -91,7 +91,7 @@ export default {
                 }
             }
             .cover {
-                height: 30rem;
+                height: 25rem;
                 width: 30rem;
                 background-color: rgba(0,0,0, 0.5);
                 position: absolute;

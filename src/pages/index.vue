@@ -86,11 +86,11 @@ export default {
 .homeCarousel {
     margin: 0;
     padding: 0;
-    height: 30rem;
+    height: 20rem;
     width: auto;
     background-color: rgba(255, 255, 255, 0.856);
     img {
-        height: 30rem;
+        height: 20rem;
         width:100%;
     }
 }

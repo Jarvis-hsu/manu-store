@@ -20,9 +20,9 @@
                         </CarouselItem>
                     </Carousel>
             </TabPane>
-            <TabPane label="品牌商店">
+            <TabPane label="品牌商店" class="logoBar">
                 <div>
-                    <h1>品牌商店</h1>
+                    <img src="../../../static/img/manu.png"/>
                 </div>
             </TabPane>
         </Tabs>
@@ -50,7 +50,7 @@ export default {
     .classCarousel{
         margin: 0;
         padding: 0;
-        height: 30rem;
+        height: 13rem;
         width: auto;
         background-color: rgba(255, 255, 255, 0.856);
         img {
@@ -80,6 +80,17 @@ export default {
         &:hover {
             color:$COLOR_FFF!important;
         }
+    }
+}
+
+
+.logoBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        width: 10rem;
+        height: 10rem;
     }
 }
 

@@ -24,8 +24,6 @@
                                 类别
                             </template>
                             <MenuItem v-for="(item, index) in classList" :name="'1-'+index">{{item.name}}</MenuItem>
-                            <!-- <MenuItem name="1-2">Option 2</MenuItem>
-                            <MenuItem name="1-3">Option 3</MenuItem> -->
                         </Submenu>
                         <Submenu name="2">
                             <template slot="title">
@@ -49,8 +47,8 @@
             </Col>
         </Row>
         <Row class="padding-0-44 page" type="flex" justify="center">
-            <Col span="12" offset="4">
-                <Page :total="50" show-elevator />
+            <Col span="12">
+                <Page :total="50" show-elevator show-total/>
             </Col>
         </Row>
     </div>
@@ -111,8 +109,14 @@ export default {
             }
         }
         .ivu-menu-item-selected {
-        color: $COLOR_FFF !important;
-        background: $MAIN_SELECT_COLOR !important;
+            color: $COLOR_FFF !important;
+            background: $MAIN_SELECT_COLOR !important;
+        }
+        .ivu-menu-submenu-title:hover {
+            color: $MAIN_COLOR;
+        }
+        .ivu-menu-item-active:not(.ivu-menu-submenu):after{
+            background: $MAIN_COLOR;
         }
     }
 }

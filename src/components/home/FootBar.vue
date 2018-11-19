@@ -136,7 +136,7 @@ export default {
     color: $TEXT_COLOR_WHITE;
     background-color: $MAIN_COLOR;
     .largeFont {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
     .midFont{
         font-size: 1rem;
