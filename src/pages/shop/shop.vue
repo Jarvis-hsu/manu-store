@@ -11,19 +11,19 @@
                 <Breadcrumb style="text-align:left;">
                     <BreadcrumbItem to="/">主页</BreadcrumbItem>
                     <BreadcrumbItem to="/shop">商店</BreadcrumbItem>
-                    <BreadcrumbItem>{{navType}}</BreadcrumbItem>
+                    <BreadcrumbItem>{{navName[parentType]}}</BreadcrumbItem>
                 </Breadcrumb>
             </Col>
         </Row>
         <Row class="padding-0-44">
             <Col span="4">
                 <Sider>
-                    <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
-                        <Submenu name="1">
+                    <Menu theme="light" :active-name="childType" width="auto" :open-names="[parentType]" @on-select="searchProd">
+                        <Submenu :name="parentType">
                             <template slot="title">
                                 类别
                             </template>
-                            <MenuItem v-for="(item, index) in classList" :name="'1-'+index">{{item.name}}</MenuItem>
+                            <MenuItem v-for="(item, index) in classList" :name="parentType+'_'+index">{{item.name}}</MenuItem>
                         </Submenu>
                         <Submenu name="2">
                             <template slot="title">
@@ -43,12 +43,12 @@
                 </Sider>
             </Col>
             <Col span="20">
-                <product></product>
+                <product v-on:getTotalProd="getTotalNum"></product>
             </Col>
         </Row>
         <Row class="padding-0-44 page" type="flex" justify="center">
             <Col span="12">
-                <Page :total="50" show-elevator show-total/>
+                <Page :total="totalNum" show-elevator show-total/>
             </Col>
         </Row>
     </div>
@@ -64,28 +64,35 @@ export default {
     },
     data (){
         return {
-            navType: '',
+            parentType: '',
+            childType: '',
+            totalNum: 0,
             navName: {
                 "jersey":"球衣",
                 "training":"训练系列",
-                "fashion": "时尚", 
                 "equip": "装备",
-                "family": "家居用品",
-                "memory": "纪念品",
                 "discount": "折扣区"
             },
             classList: []
         }
     },
-    mounted(){
-        this.navType = this.getNavType();
+    created(){
+        this.getNavType();
         this.classList = this.$store.state.navList;
         
     },
     methods: {
         getNavType(){
-            var type = this.$store.state.navType;
-            return this.navName[type];
+            this.parentType = this.$store.state.navType.parentType;
+            this.childType = this.$store.state.navType.childType;
+            console.log("parentType:"+this.parentType);
+            console.log("childType:"+this.childType);
+        },
+        getTotalNum(data){
+            this.totalNum = data;
+        },
+        searchProd(name){
+            console.log(name);
         }
     }
 }

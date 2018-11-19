@@ -41,7 +41,7 @@
         <Row class="padding-0-44 padding-2-0">
             <Col>
                 <div>
-                    <img class="menuImage" src="../../static/img/ccc.jpg"/>
+                    <img class="menuImage" src="../../static/img/hhh.jpg"/>
                 </div>
             </Col>
         </Row>
@@ -101,5 +101,8 @@ export default {
         width: 30rem;
         height: 20rem;
         background-color: #aaa;
+        &:hover {
+            cursor: pointer;
+        }
     }
 </style>

@@ -5,7 +5,7 @@
                 <Carousel v-model="value1" loop class="BarCarousel">
                         <CarouselItem>
                             <div class="classCarousel">
-                                <img src="../../../static/img/fff.jpg"/>
+                                <img src="../../../static/img/iii.jpg"/>
                             </div>
                         </CarouselItem>
                         <CarouselItem>

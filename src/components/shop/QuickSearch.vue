@@ -12,11 +12,36 @@ export default {
     name: 'QuickSearch',
     data (){
         return {
-            btnList:[
-                {name:'主场球衣'},
-                {name:'第三球衣'},
-                {name:'守门员球衣'},
-            ]
+            btnList:[]
+        }
+    },
+    mounted(){
+        this.getMenuData();
+    },
+    methods: {
+        getMenuData(){
+            var _this = this;
+            this.$http({
+                method: 'get',
+                url: '../../../static/data/home/menu.json',
+                transformResponse: [function(data){
+                    //处理数据
+                    _this.setMenu(JSON.parse(data));
+                }]
+            })
+        },
+        setMenu(menuData){
+            var navType = this.$store.state.navType.parentType;
+            if(menuData != undefined || menuData != null){
+                for(var i=0; i<menuData.length; i++){
+                    if(navType== menuData[i].type)
+                    {
+                        this.btnList = menuData[i].list;
+                        break;
+                    }
+                }
+            }
+            
         }
     }
 }
@@ -25,7 +50,8 @@ export default {
 .QuickSearch{
     height: 18rem;
     width: auto;
-    background-color: #aaa;
+    background: url("../../../static/img/ddd.jpg") no-repeat;
+    background-size: 100% 100%;
     .ivu-row-flex {
         position: relative;
         top: 80%;

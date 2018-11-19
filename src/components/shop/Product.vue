@@ -40,9 +40,24 @@ export default {
                     type: 'away',
                     price: '¥299',
                     imgUrl: '../../static/img/clo-3.jpg'
+                },
+                {
+                    name: '曼联主场球衣 2018-19',
+                    type: 'away',
+                    price: '¥299',
+                    imgUrl: '../../static/img/fff.jpg'
+                },
+                {
+                    name: '曼联主场球衣 2018-19',
+                    type: 'away',
+                    price: '¥299',
+                    imgUrl: '../../static/img/clo-5.jpg'
                 }
             ]
         }
+    },
+    mounted(){
+        this.$emit("getTotalProd", this.productList.length);
     }
 }
 </script>

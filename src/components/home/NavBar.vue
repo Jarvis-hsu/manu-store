@@ -50,13 +50,17 @@ export default {
     methods: {
         shopInit(name){
             var list = [];
-            var type = name.split("_")[0];
-            this.$store.commit("setNavType", type);
+            var childType = name;
+            var parentType = name.split("_")[0];
+            this.$store.commit("setNavType", {
+                "childType": childType,
+                "parentType": parentType
+            });
 
-            if(type == "jersey") list = this.jerseyList;
-            if(type == "training") list = this.trainingList;
-            if(type == "equip") list = this.equipList;
-            if(type == "discount") list = this.discountList;
+            if(parentType == "jersey") list = this.jerseyList;
+            if(parentType == "training") list = this.trainingList;
+            if(parentType == "equip") list = this.equipList;
+            if(parentType == "discount") list = this.discountList;
 
             this.$store.commit("setNavList", list);
             this.$router.push('/shop');
@@ -94,10 +98,8 @@ export default {
                         this.discountList = menuData[i].list;
                     }
                 }
-            }
-            
+            }   
         }
-
     }
 }
 </script>                   
