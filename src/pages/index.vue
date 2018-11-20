@@ -2,7 +2,7 @@
     <div>
         <Row>
             <Col>
-            <Carousel autoplay v-model="value2" loop class="homeCarousel">
+            <Carousel autoplay v-model="value2" arrow="always" loop class="homeCarousel">
                 <CarouselItem>
                     <div class="carousel">
                         <img src="../../static/img/aaa.jpg"/>
@@ -29,13 +29,6 @@
         <Row class="padding-0-44">
             <Col>
                 <class-bar></class-bar>
-            </Col>
-        </Row>
-        <Row class="padding-0-44 padding-2-0">
-            <Col>
-                <div>
-                    <img class="menuImage" src="../../static/img/bbb.jpg"/>
-                </div>
             </Col>
         </Row>
         <Row class="padding-0-44 padding-2-0">

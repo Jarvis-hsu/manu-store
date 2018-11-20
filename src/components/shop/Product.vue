@@ -16,48 +16,38 @@ export default {
     name: 'Product',
     data (){
         return {
-            productList:[
-                {
-                    name: '曼联主场球衣 2018-19',
-                    type: 'home',
-                    price: '¥299',
-                    imgUrl: '../../static/img/clo-4.jpg'
-                },
-                {
-                    name: '曼联主场球衣 2018-19',
-                    type: 'away',
-                    price: '¥399',
-                    imgUrl: '../../static/img/clo-1.jpg'
-                },
-                {
-                    name: '曼联主场球衣 2018-19',
-                    type: 'home',
-                    price: '¥199',
-                    imgUrl: '../../static/img/clo-2.jpg'
-                },
-                {
-                    name: '曼联主场球衣 2018-19',
-                    type: 'away',
-                    price: '¥299',
-                    imgUrl: '../../static/img/clo-3.jpg'
-                },
-                {
-                    name: '曼联主场球衣 2018-19',
-                    type: 'away',
-                    price: '¥299',
-                    imgUrl: '../../static/img/fff.jpg'
-                },
-                {
-                    name: '曼联主场球衣 2018-19',
-                    type: 'away',
-                    price: '¥299',
-                    imgUrl: '../../static/img/clo-5.jpg'
-                }
-            ]
+            productList:[]
         }
     },
     mounted(){
         this.$emit("getTotalProd", this.productList.length);
+        this.getProdsData();
+    },
+    methods: {
+        getProdsData(){
+            var _this = this;
+            this.$http({
+                method: 'get',
+                url: '../../../static/data/shop/product.json',
+                transformResponse: [function(data){
+                    //处理数据
+                    _this.setProds(JSON.parse(data));
+                }]
+            })
+        },
+        setProds(prodData){
+            var childType = this.$store.state.navType.childType;
+            this.productList = [];
+            if(prodData != undefined || prodData != null){
+                for(var i=0; i<prodData.length; i++){
+                    if(childType== prodData[i].type)
+                    {
+                        this.productList.push(prodData[i]);
+                    }
+                }
+                this.$emit("getTotalProd", this.productList.length);
+            }
+        }
     }
 }
 </script>

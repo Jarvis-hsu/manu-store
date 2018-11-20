@@ -74,7 +74,6 @@ export default {
                 transformResponse: [function(data){
                     //处理数据
                     _this.setMenu(JSON.parse(data));
-                    // console.log(JSON.parse(data));
                 }]
             })
         },

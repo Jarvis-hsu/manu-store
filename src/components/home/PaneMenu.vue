@@ -21,7 +21,7 @@ export default {
             menuList: [
                 {isShow: false, name: '18/19赛季曼联第三球衣', imgUrl: '../../../static/img/ggg.jpg'},
                 {isShow: false, name: 'NEW ERA' , imgUrl: '../../../static/img/fff.jpg'},
-                {isShow: false, name: '18/19训练系列' , imgUrl: '../../../static/img/eee.jpg'},
+                {isShow: false, name: '18/19训练系列' , imgUrl: '../../../static/img/bbb.jpg'},
                 {isShow: false, name: '曼联赛前上衣' , imgUrl: '../../../static/img/fff.jpg'},
                 {isShow: false, name: 'NEW ERA帽子' , imgUrl: '../../../static/img/eee.jpg'},
                 {isShow: false, name: '1968年欧洲杯冠军系列' , imgUrl: '../../../static/img/ggg.jpg'},

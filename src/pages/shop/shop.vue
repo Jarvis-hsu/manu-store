@@ -43,7 +43,7 @@
                 </Sider>
             </Col>
             <Col span="20">
-                <product v-on:getTotalProd="getTotalNum"></product>
+                <product v-on:getTotalProd="getTotalNum" ref="prodsComponent"></product>
             </Col>
         </Row>
         <Row class="padding-0-44 page" type="flex" justify="center">
@@ -85,14 +85,17 @@ export default {
         getNavType(){
             this.parentType = this.$store.state.navType.parentType;
             this.childType = this.$store.state.navType.childType;
-            console.log("parentType:"+this.parentType);
-            console.log("childType:"+this.childType);
         },
         getTotalNum(data){
             this.totalNum = data;
         },
         searchProd(name){
-            console.log(name);
+            this.$store.commit("setNavType", {
+                "parentType": this.parentType,
+                "childType": name
+            })
+            //父组件调用子组件的方法
+            this.$refs.prodsComponent.getProdsData();
         }
     }
 }

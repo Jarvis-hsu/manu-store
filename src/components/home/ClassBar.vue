@@ -2,7 +2,7 @@
     <div>
         <Tabs>
             <TabPane label="主场球衣">
-                <Carousel v-model="value1" loop class="BarCarousel">
+                <Carousel v-model="value1" loop arrow="always" class="BarCarousel">
                         <CarouselItem>
                             <div class="classCarousel">
                                 <img src="../../../static/img/iii.jpg"/>
