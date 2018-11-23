@@ -2,7 +2,7 @@
     <div class="product">
         <ul class="prodList">
             <li v-for="(item, index) in productList">
-                <div class="prods">
+                <div class="prods" @click="goToDetail">
                     <img class="prodImg" :src="item.imgUrl" />
                     <span>{{item.name}}</span>
                     <span>{{item.price}}</span>
@@ -13,7 +13,7 @@
 </template>
 <script>
 export default {
-    name: 'Product',
+    name: 'ProductList',
     data (){
         return {
             productList:[]
@@ -47,6 +47,9 @@ export default {
                 }
                 this.$emit("getTotalProd", this.productList.length);
             }
+        },
+        goToDetail(){
+            this.$router.push("/shop/product");
         }
     }
 }

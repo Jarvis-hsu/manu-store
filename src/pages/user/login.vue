@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Row type="flex" justify="center" align="middle" class="login" v-if="username==''">
+        <Row type="flex" justify="center" align="middle" class="login" v-if="username==''||username==null">
             <Col span="6">
                 <h2>登录</h2>
                 <Row type="flex" align="middle">
@@ -50,15 +50,13 @@ export default {
     inject: ['reload'],
     data () {
         return {
-            username: this.$store.state.username,
+            username: sessionStorage.getItem("username"),
             loginName: '',
             passwd: ''   
         }
     },
     mounted(){
-        if(this.username){
-            this.showInfo();
-        }
+        
     },
     methods: {
         async handleSubmit () {

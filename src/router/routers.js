@@ -1,11 +1,15 @@
 import home from '../pages/index.vue';
-import shop from '../pages/shop/shop.vue';
 
 import login from '../pages/user/login.vue';
 import registe from '../pages/user/registe.vue';
 import shopCart from '../pages/user/shopCart.vue';
 import buyed from '../pages/user/buyed.vue';
 import userInfo from '../pages/user/userInfo.vue';
+
+import shop from '../pages/shop/shop.vue';
+import product from '../pages/shop/product.vue';
+import showProds from '../pages/shop/showProds.vue';
+
 
 const routes = [
         //首页
@@ -32,19 +36,17 @@ const routes = [
           children: [
             {
               //用户信息
-              path: 'userInfo',
-              name: 'userInfo',
+              path: '/login/userInfo',
               component: userInfo
             },
             {
               //我的购物车
-              path: 'shopCart',
-              name: 'shopCart',
+              path: '/login/shopCart',
               component: shopCart
             },
             {
-              path: 'buyed',
-              name: 'buyed',
+              //已买到
+              path: '/login/buyed',
               component: buyed
             }
           ]
@@ -59,7 +61,21 @@ const routes = [
         {
             path: '/shop',
             name: 'shop',
-            component: shop
+            component: shop,
+            children: [
+              {
+                //产品详细
+                path: 'product',
+                name: 'product',
+                component: product
+              },
+              {
+                //产品展示
+                path: 'showProds',
+                name: 'showProds',
+                component: showProds
+              }
+            ]
         },
         //购物车
         {

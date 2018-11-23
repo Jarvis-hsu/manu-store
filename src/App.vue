@@ -11,7 +11,7 @@
                 <Button @click="search">搜索</Button>
             </Col>
             <Col span="3" class="user">
-                <div v-if="user==''">
+                <div v-if="user==''||user==null">
                     <span style="font-size:1rem;cursor:pointer;" @click="goLogin">亲，请先登录</span>
                 </div>
                 <div v-else>
@@ -59,9 +59,12 @@ export default {
     },
     data(){
         return {
-            user: "",
+            user: sessionStorage.getItem("username"),
             isRouterAlive: true
         }
+    },
+    mounted(){
+        alert(sessionStorage.getItem("username"));
     },
     watch: {
         '$route': 'getInfo'
