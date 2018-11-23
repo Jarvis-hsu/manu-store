@@ -6,6 +6,8 @@ const state = {
     trainingList:[],  //训练系列
     equipList:[],  //装备
     discountList:[],  //折扣区
+
+    prod: {} //产品
 }
 
 export default state; 

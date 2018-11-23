@@ -59,12 +59,12 @@ export default {
     },
     data(){
         return {
-            user: sessionStorage.getItem("username"),
+            user: '',
             isRouterAlive: true
         }
     },
     mounted(){
-        alert(sessionStorage.getItem("username"));
+        this.getInfo();
     },
     watch: {
         '$route': 'getInfo'
@@ -102,7 +102,7 @@ export default {
             })
         },
         getInfo(){
-            this.user = this.$store.state.username;
+            this.user = sessionStorage.getItem("username");
             this.reload();
         }
     }

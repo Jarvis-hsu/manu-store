@@ -39,10 +39,42 @@
     </div>
 </template>
 <script>
+import ProductList from '../../components/shop/ProductList'
+
 export default {
+    components: {
+        ProductList:ProductList
+    },
     data (){
         return {
-
+            parentType: '',
+            childType: '',
+            totalNum: 0,
+            classList: []
+        }
+    },
+    created(){
+        this.getNavType();
+        this.classList = this.$store.state.navList;
+        
+    },
+    methods: {
+        getNavType(){
+            var parent = this.$store.state.navType.parentType;
+            var child = this.$store.state.navType.childType;
+            this.parentType = parent?parent : '';
+            this.childType = child?child : '';
+        },
+        getTotalNum(data){
+            this.totalNum = data;
+        },
+        searchProd(name){
+            this.$store.commit("setNavType", {
+                "parentType": this.parentType,
+                "childType": name
+            })
+            //父组件调用子组件的方法
+            this.$refs.prodsComponent.getProdsData();
         }
     }
 }

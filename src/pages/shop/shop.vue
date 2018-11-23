@@ -22,8 +22,6 @@
 </template>
 <script>
 import QuickSearch from '../../components/shop/QuickSearch';
-// import showProds from '../../components/shop/ShowProds';
-// import ProductList from '../../components/shop/ProductList';
 
 export default {
     components: {
@@ -32,15 +30,12 @@ export default {
     data (){
         return {
             parentType: '',
-            childType: '',
-            totalNum: 0,
             navName: {
                 "jersey":"球衣",
                 "training":"训练系列",
                 "equip": "装备",
                 "discount": "折扣区"
-            },
-            classList: []
+            }
         }
     },
     created(){
@@ -51,20 +46,7 @@ export default {
     methods: {
         getNavType(){
             var parent = this.$store.state.navType.parentType;
-            var child = this.$store.state.navType.childType;
             this.parentType = parent?parent : '';
-            this.childType = child?child : '';
-        },
-        getTotalNum(data){
-            this.totalNum = data;
-        },
-        searchProd(name){
-            this.$store.commit("setNavType", {
-                "parentType": this.parentType,
-                "childType": name
-            })
-            //父组件调用子组件的方法
-            this.$refs.prodsComponent.getProdsData();
         }
     }
 }

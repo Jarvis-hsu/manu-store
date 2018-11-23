@@ -2,7 +2,7 @@
     <div class="product">
         <ul class="prodList">
             <li v-for="(item, index) in productList">
-                <div class="prods" @click="goToDetail">
+                <div class="prods" @click="goToDetail(item.id, item.name)">
                     <img class="prodImg" :src="item.imgUrl" />
                     <span>{{item.name}}</span>
                     <span>{{item.price}}</span>
@@ -48,7 +48,11 @@ export default {
                 this.$emit("getTotalProd", this.productList.length);
             }
         },
-        goToDetail(){
+        goToDetail(prodId, prodName){
+            this.$store.commit("setProd", {
+                "id":prodId,
+                "name": prodName
+            })
             this.$router.push("/shop/product");
         }
     }
