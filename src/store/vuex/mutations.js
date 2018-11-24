@@ -23,8 +23,9 @@ const mutations = {
     },  //折扣区
 
     setProd: (state, data) =>{
-       state.prod.name = data.name;
-       state.prod.id = data.id;
+        state.prod.id = data.id;
+        state.prod.name = data.name;
+        state.prod.price = data.price;
     }
 }
 

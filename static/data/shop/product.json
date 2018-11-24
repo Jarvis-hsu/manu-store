@@ -3,42 +3,42 @@
         "id": "jersey_0_0",
         "name": "曼联主场球衣 2018-19",
         "type": "jersey_0",
-        "price": "¥299",
+        "price": 299,
         "imgUrl": "../../static/img/clo-4.jpg"
     },
     {
         "id": "jersey_1_0",
         "name": "曼联客场球衣 2018-19",
         "type": "jersey_1",
-        "price": "¥399",
+        "price": 399,
         "imgUrl": "../../static/img/clo-1.jpg"
     },
     {
         "id": "jersey_0_1",
         "name": "曼联主场球衣 2018-19",
         "type": "jersey_0",
-        "price": "¥199",
+        "price": 199,
         "imgUrl": "../../static/img/clo-2.jpg"
     },
     {
         "id": "jersey_1_1",
         "name": "曼联客场球衣 2018-19",
         "type": "jersey_1",
-        "price": "¥299",
+        "price": 299,
         "imgUrl": "../../static/img/clo-3.jpg"
     },
     {
         "id": "jersey_2_0",
         "name": "曼联第三客场球衣 2018-19",
         "type": "jersey_2",
-        "price": "¥299",
+        "price": 299,
         "imgUrl": "../../static/img/fff.jpg"
     },
     {
         "id": "jersey_3_0",
         "name": "曼联守门员球衣 2018-19",
         "type": "jersey_3",
-        "price": "¥299",
+        "price": 299,
         "imgUrl": "../../static/img/clo-5.jpg"
     }
 ]

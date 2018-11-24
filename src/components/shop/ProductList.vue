@@ -2,10 +2,10 @@
     <div class="product">
         <ul class="prodList">
             <li v-for="(item, index) in productList">
-                <div class="prods" @click="goToDetail(item.id, item.name)">
+                <div class="prods" @click="goToDetail(item)">
                     <img class="prodImg" :src="item.imgUrl" />
                     <span>{{item.name}}</span>
-                    <span>{{item.price}}</span>
+                    <span>{{formatPrice(item.price)}}</span>
                 </div>
             </li>
         </ul>
@@ -48,12 +48,20 @@ export default {
                 this.$emit("getTotalProd", this.productList.length);
             }
         },
-        goToDetail(prodId, prodName){
+        goToDetail(prodInfo){
             this.$store.commit("setProd", {
-                "id":prodId,
-                "name": prodName
+                "id":prodInfo.id,
+                "name": prodInfo.name,
+                "price": prodInfo.price
             })
             this.$router.push("/shop/product");
+        },
+        formatPrice(price){
+            var prodPrice = '';
+            if(price != 0 || price != null){
+                prodPrice = '¥'+ price + '.00';
+            }
+            return prodPrice
         }
     }
 }
@@ -82,8 +90,9 @@ export default {
                 height: 80%;
             }
             span{
+                margin: 0.5rem 0;
                 font-weight: bold;
-                margin: 0.5rem;
+                font-size: 0.9rem;
             }
             span:last-child {
                 font-size: 1rem;
