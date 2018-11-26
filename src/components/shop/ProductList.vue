@@ -52,7 +52,8 @@ export default {
             this.$store.commit("setProd", {
                 "id":prodInfo.id,
                 "name": prodInfo.name,
-                "price": prodInfo.price
+                "price": prodInfo.price,
+                "url": prodInfo.imgUrl
             })
             this.$router.push("/shop/product");
         },

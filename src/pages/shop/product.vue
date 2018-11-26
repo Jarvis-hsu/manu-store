@@ -2,7 +2,7 @@
     <div class="prodDetail">
         <Row>
             <Col span="16" style="display:flex;align-items:center;justify-content:center;">
-                <img src="../../../static/img/clo-1.jpg">
+                <img :src="prodImgUrl">
             </Col>
             <Col span="8">
                 <div class="prodInfo">
@@ -11,16 +11,19 @@
                     <div style="width:100%; height:1px; background:#515a6e;"/>
                     <div class="input">
                         <span>尺寸</span>
-                        <ul>
+                        <!-- <ul>
                             <li v-for="item in sizeList">
                                 <Button>{{item.name}}</Button>
                             </li>
-                        </ul>
+                        </ul> -->
+                        <RadioGroup type="button">
+                            <Radio v-for="item in sizeList" :label="item.name">{{item.name}}</Radio>
+                        </RadioGroup>
                     </div>
                     <div style="width:100%; height:1px; background:#515a6e;"/>
                     <div class="input">
                         <span>数量</span>
-                        <div>
+                        <div class="count">
                             <Button @click="minus">-</Button>
                             <Input v-model="num" readonly></Input>
                             <Button @click="plus">+</Button>
@@ -42,12 +45,11 @@ export default {
         return {
             prodName: '',
             prodPrice: '',
+            prodImgUrl: '',
             sizeList: [
-                {name: 'XS'},
                 {name: 'S'},
                 {name: 'M'},
                 {name: 'L'},
-                {name: 'XL'},
             ],
             num: 1,
         }
@@ -64,6 +66,7 @@ export default {
     created(){
         this.prodName = this.$store.state.prod.name;
         this.prodPrice = this.formatPrice();
+        this.prodImgUrl = '../'+this.$store.state.prod.url;
     },
     methods: {
         formatPrice(){
@@ -96,8 +99,8 @@ export default {
 
 .prodDetail {
     img {
-        width: 30rem;
-        height: 30rem;
+        width: 25rem;
+        height: 25rem;
     }
     .prodInfo {
         width: 100%;
@@ -113,57 +116,53 @@ export default {
             font-size: 1.2rem;
             font-weight:500;
         }
-    }
-    .input {
-        width: 100%;
-        margin: 1rem 0;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        span {
-            text-align: left;
-            min-width: 10rem;
-            min-height: 2rem;
-        }
-        ul {
+        .input {
+            height: 5rem;
+            width: 100%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            li {
-                margin: 0.5rem 0.5rem;
+            span {
+                margin: 0 2rem 0 0;
+            }
+            .count {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .ivu-input{
+                    height: 2.5rem;
+                    width: 5rem;
+                    text-align: center;
+                }
+                .ivu-btn {
+                    height: 2.5rem;
+                    width: 4rem;
+                    text-align: center;
+                }
             }
         }
-        div {
-            display: flex;
-            justify-content: space-around;
-            .ivu-input {
-                height: 100%;
-                text-align: center;
-                font-size:1rem;
+        .ivu-btn{
+            &:hover {
+                color: $TEXT_COLOR_BLACK;
+                border-color: $TEXT_COLOR_BLACK;
             }
-        }
+            &:focus {
+                color: $TEXT_COLOR_BLACK;
+                border-color: $TEXT_COLOR_BLACK;
+                box-shadow: 0 0 2px $TEXT_COLOR_BLACK;
+            }
     }
-    .right {
-        width: 100%;
-        margin: 1rem 0 0 0;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
     }
     .addCar {
         margin: 1rem 0;
         height: 3.5rem;
         font-size: 1.2rem;
     }
-    .ivu-btn{
+    
+    .ivu-radio-wrapper{
         &:hover {
             color: $TEXT_COLOR_BLACK;
             border-color: $TEXT_COLOR_BLACK;
-        }
-        &:focus {
-            color: $TEXT_COLOR_BLACK;
-            border-color: $TEXT_COLOR_BLACK;
-            box-shadow: 0 0 2px $TEXT_COLOR_BLACK;
         }
     }
 }

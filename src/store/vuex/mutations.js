@@ -22,10 +22,17 @@ const mutations = {
         state.discountList = data
     },  //折扣区
 
+    //产品属性
     setProd: (state, data) =>{
-        state.prod.id = data.id;
-        state.prod.name = data.name;
-        state.prod.price = data.price;
+
+        if(data == null){
+            state.prod = {};
+        }else{
+            state.prod.id = data.id;
+            state.prod.name = data.name;
+            state.prod.price = data.price;
+            state.prod.url = data.url;
+        }
     }
 }
 

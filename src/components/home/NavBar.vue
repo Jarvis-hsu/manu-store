@@ -62,6 +62,7 @@ export default {
             if(parentType == "equip") list = this.equipList;
             if(parentType == "discount") list = this.discountList;
 
+            this.$store.commit("setProd", null); //清空
             this.$store.commit("setNavList", list);
             this.$router.push('/shop');
             this.reload();

@@ -12,6 +12,7 @@
                     <BreadcrumbItem to="/">主页</BreadcrumbItem>
                     <BreadcrumbItem to="/shop">商店</BreadcrumbItem>
                     <BreadcrumbItem>{{navName[parentType]}}</BreadcrumbItem>
+                    <BreadcrumbItem v-if="prodName !=''">{{prodName}}</BreadcrumbItem>
                 </Breadcrumb>
             </Col>
         </Row>
@@ -30,6 +31,7 @@ export default {
     data (){
         return {
             parentType: '',
+            prodName: '',
             navName: {
                 "jersey":"球衣",
                 "training":"训练系列",
@@ -41,7 +43,7 @@ export default {
     created(){
         this.getNavType();
         this.classList = this.$store.state.navList;
-        
+        this.prodName = this.$store.state.prod.name;
     },
     methods: {
         getNavType(){
