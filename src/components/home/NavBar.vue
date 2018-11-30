@@ -46,25 +46,43 @@ export default {
     },
     created(){
         this.getMenuData();
+        this.shopInit("");
     },
     methods: {
         shopInit(name){
             var list = [];
-            var childType = name;
-            var parentType = name.split("_")[0];
-            this.$store.commit("setNavType", {
-                "childType": childType,
-                "parentType": parentType
-            });
+            var childType = "";
+            var parentType = "";
 
-            if(parentType == "jersey") list = this.jerseyList;
-            if(parentType == "training") list = this.trainingList;
-            if(parentType == "equip") list = this.equipList;
-            if(parentType == "discount") list = this.discountList;
+            if(name != ""){
+                childType = name;
+                parentType = name.split("_")[0];
 
-            this.$store.commit("setProd", null); //清空
+                if(parentType == "jersey") list = this.jerseyList;
+                if(parentType == "training") list = this.trainingList;
+                if(parentType == "equip") list = this.equipList;
+                if(parentType == "discount") list = this.discountList;
+                var navTypeObj = {
+                    "childType": childType,
+                    "parentType": parentType
+                }
+                sessionStorage.setItem("navType", JSON.stringify(navTypeObj));
+                this.$store.commit("setNavType", navTypeObj);
+
+                sessionStorage.setItem("navList", JSON.stringify(list));
+
+                sessionStorage.removeItem("prod");//产品清空
+                this.$store.commit("setProd", null); 
+
+                this.$router.push('/shop/showProds');
+
+            }else{
+                childType = JSON.parse(sessionStorage.getItem("navType")).childType;
+                parentType = JSON.parse(sessionStorage.getItem("navType")).parentType;
+                list = JSON.parse(sessionStorage.getItem("navList"));
+            }
+            
             this.$store.commit("setNavList", list);
-            this.$router.push('/shop');
             this.reload();
         },
         getMenuData(){

@@ -36,7 +36,7 @@ export default {
             })
         },
         setProds(prodData){
-            var childType = this.$store.state.navType.childType;
+            var childType = JSON.parse(sessionStorage.getItem("navType")).childType;
             this.productList = [];
             if(prodData != undefined || prodData != null){
                 for(var i=0; i<prodData.length; i++){
@@ -49,12 +49,16 @@ export default {
             }
         },
         goToDetail(prodInfo){
-            this.$store.commit("setProd", {
+            var prodObj = {
                 "id":prodInfo.id,
                 "name": prodInfo.name,
                 "price": prodInfo.price,
                 "url": prodInfo.imgUrl
-            })
+            }
+
+            sessionStorage.setItem("prod", JSON.stringify(prodObj));
+            this.$store.commit("setProd", prodObj);
+
             this.$router.push("/shop/product");
         },
         formatPrice(price){

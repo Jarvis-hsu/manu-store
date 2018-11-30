@@ -11,11 +11,6 @@
                     <div style="width:100%; height:1px; background:#515a6e;"/>
                     <div class="input">
                         <span>尺寸</span>
-                        <!-- <ul>
-                            <li v-for="item in sizeList">
-                                <Button>{{item.name}}</Button>
-                            </li>
-                        </ul> -->
                         <RadioGroup type="button">
                             <Radio v-for="item in sizeList" :label="item.name">{{item.name}}</Radio>
                         </RadioGroup>
@@ -52,26 +47,27 @@ export default {
                 {name: 'L'},
             ],
             num: 1,
+            price: 0
         }
     },
     computed:{
         totalPrice: function(){
             var total = '';
-            var totalFee = this.$store.state.prod.price * this.num;
-            
+            var totalFee = this.price * this.num;
             return total = '¥'+ totalFee + '.00';
-
         }　
     },
     created(){
-        this.prodName = this.$store.state.prod.name;
-        this.prodPrice = this.formatPrice();
-        this.prodImgUrl = '../'+this.$store.state.prod.url;
+        var prodObj = JSON.parse(sessionStorage.getItem("prod"));
+        this.prodName = prodObj.name;
+        this.price = prodObj.price;
+        this.prodPrice = this.formatPrice(prodObj.price);
+        this.prodImgUrl = '../'+prodObj.url;
     },
     methods: {
-        formatPrice(){
-            var price = '';
-            price = this.$store.state.prod.price;
+        formatPrice(price){
+            // var price = '';
+            // price = this.$store.state.prod.price;
             if(price != 0||price != null){
                 price = '¥'+ price + '.00';
             }
@@ -163,6 +159,17 @@ export default {
         &:hover {
             color: $TEXT_COLOR_BLACK;
             border-color: $TEXT_COLOR_BLACK;
+        }
+    }
+
+    .ivu-radio-wrapper-checked {
+        border-color: $TEXT_COLOR_BLACK;
+        color: $TEXT_COLOR_BLACK;
+        font-weight: bold;
+        box-shadow: -1px 0 0 0 $COLOR_BLACK;
+        &:first-child {
+            border-color: $TEXT_COLOR_BLACK;
+            color: $TEXT_COLOR_BLACK;
         }
     }
 }

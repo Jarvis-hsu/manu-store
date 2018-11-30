@@ -60,19 +60,28 @@ export default {
     },
     methods: {
         getNavType(){
-            var parent = this.$store.state.navType.parentType;
-            var child = this.$store.state.navType.childType;
-            this.parentType = parent?parent : '';
-            this.childType = child?child : '';
+            var navTypeObj = JSON.parse(sessionStorage.getItem("navType"));
+            var parent = "";
+            var child = "";
+            if(navTypeObj){
+                parent = navTypeObj.parentType;
+                child = navTypeObj.childType;
+            }
+            
+            this.parentType = parent;
+            this.childType = child;
         },
         getTotalNum(data){
             this.totalNum = data;
         },
         searchProd(name){
-            this.$store.commit("setNavType", {
+            var navTypeObj = {
                 "parentType": this.parentType,
                 "childType": name
-            })
+            }
+
+            sessionStorage.setItem("navType", JSON.stringify(navTypeObj));
+            this.$store.commit("setNavType", navTypeObj)
             //父组件调用子组件的方法
             this.$refs.prodsComponent.getProdsData();
         }

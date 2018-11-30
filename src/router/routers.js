@@ -62,7 +62,6 @@ const routes = [
             path: '/shop',
             name: 'shop',
             component: shop,
-            redirect: '/shop/showProds',
             children: [
               {
                 //产品详细

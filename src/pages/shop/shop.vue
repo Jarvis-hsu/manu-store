@@ -17,7 +17,7 @@
             </Col>
         </Row>
         <Row class="padding-0-44">
-            <router-view></router-view>
+            <router-view v-if="isRouterAlive"></router-view>
         </Row>
     </div>
 </template>
@@ -30,6 +30,7 @@ export default {
     },
     data (){
         return {
+            isRouterAlive: true,
             parentType: '',
             prodName: '',
             navName: {
@@ -42,14 +43,16 @@ export default {
     },
     created(){
         this.getNavType();
-        this.classList = this.$store.state.navList;
-        this.prodName = this.$store.state.prod.name;
+
+        if(sessionStorage.getItem("prod")!= null){
+            this.prodName = JSON.parse(sessionStorage.getItem("prod")).name;
+        };      
     },
     methods: {
         getNavType(){
-            var parent = this.$store.state.navType.parentType;
+            var parent = JSON.parse(sessionStorage.getItem("navType")).parentType;
             this.parentType = parent?parent : '';
-        }
+        },
     }
 }
 </script>
