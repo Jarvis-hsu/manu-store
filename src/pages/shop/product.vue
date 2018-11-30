@@ -11,7 +11,7 @@
                     <div style="width:100%; height:1px; background:#515a6e;"/>
                     <div class="input">
                         <span>尺寸</span>
-                        <RadioGroup type="button">
+                        <RadioGroup v-model="prodSize" type="button">
                             <Radio v-for="item in sizeList" :label="item.name">{{item.name}}</Radio>
                         </RadioGroup>
                     </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div style="width:100%; height:1px; background:#515a6e;"/>
                     <div class="right">
-                        <span>总价：{{totalPrice}}</span>
+                        <span>总价：¥{{totalPrice}}.00</span>
                     </div>
                 </div>
                 <Button class="addCar" type="success" size="large" long @click="addCar">加入购物车</Button>
@@ -38,9 +38,11 @@
 export default {
     data (){
         return {
+            prodId: '',
             prodName: '',
             prodPrice: '',
             prodImgUrl: '',
+            prodSize: '',
             sizeList: [
                 {name: 'S'},
                 {name: 'M'},
@@ -52,13 +54,15 @@ export default {
     },
     computed:{
         totalPrice: function(){
-            var total = '';
+            var total = 0;
             var totalFee = this.price * this.num;
-            return total = '¥'+ totalFee + '.00';
+            return total = totalFee;
         }　
     },
     created(){
         var prodObj = JSON.parse(sessionStorage.getItem("prod"));
+        
+        this.prodId = prodObj.id;
         this.prodName = prodObj.name;
         this.price = prodObj.price;
         this.prodPrice = this.formatPrice(prodObj.price);
@@ -85,7 +89,32 @@ export default {
             this.num = this.num+1;
         },
         addCar(){
-            alert("add car success");
+            var shopCar = localStorage.getItem("shopCar");
+            // localStorage.removeItem("shopCar");
+            // return;
+            var addProd = {};
+            var prodList = [];
+            if(shopCar != null){
+               prodList = JSON.parse(localStorage.getItem("shopCar"));
+            }
+
+            if(this.prodSize == ""){
+                alert("请选择需要的尺寸");
+                return;
+            }else{
+                addProd.id = this.prodId;
+                addProd.name = this.prodName;
+                addProd.price = this.prodPrice;
+                addProd.size = this.prodSize;
+                addProd.num = this.num;
+                addProd.totalFee = this.totalPrice;   
+            }
+            
+            prodList.push(addProd);
+            localStorage.setItem("shopCar", JSON.stringify(prodList));
+
+            alert("加入购物车成功");
+            console.log(JSON.parse(localStorage.getItem("shopCar")));
         }
     }
 }
