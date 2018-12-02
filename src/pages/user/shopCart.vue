@@ -22,7 +22,7 @@
                 <span>操作</span>
             </Col>
         </Row>
-        <Row class="prods" type="flex" align="middle" v-for="(item, index) in prodList">
+        <Row v-show="prodList.length !=0" class="prods" type="flex" align="middle" v-for="(item, index) in prodList">
             <Col span="2">
                 <Checkbox :label="item.id"></Checkbox>
             </Col>    
@@ -44,8 +44,13 @@
             <Col span="3">
                 <span>操作</span>
             </Col>
+        </Row>
+        <Row v-show="prodList.length == 0" type="flex" align="middle" justify="center">
+            <Col>
+                <h3>暂无可选商品</h3>
+            </Col>    
         </Row>   
-        <Row class="count" type="flex" align="middle">
+        <Row class="count" type="flex" align="middle" justify="space-between">
             <Col span="2">
                 <Checkbox :indeterminate="indeterminate" :value="checkAll" @click.prevent.native="handleCheckAll">
                     全选
@@ -61,10 +66,12 @@
                 <span>已选商品：  件</span>
             </Col>
             <Col span="3">
-                <span style="font-weight:bold;color:rgb(212, 0, 0)">合计：¥{{countFee}}</span>
+                <span style="font-size:1.3rem;font-weight:bold;color:rgb(212, 0, 0)">合计：¥{{countFee}}</span>
             </Col>
-            <Col span="3">
-                <span>操作</span>
+            <Col span="1" offset="1" justify="space-between">
+                <div class="countBtn" @click="payMoney">
+                    <a href="#">结算</a>
+                </div>
             </Col>
         </Row>
     </div>    
@@ -78,13 +85,12 @@ export default {
             prodList:[]
         }
     },
+    inject:['reload'],
     computed:{
         countFee(){
             var countFee = 0;
-            console.log(this.prodList);
             for(var i=0; i<this.prodList.length; i++){
                 countFee += this.prodList[i].totalFee;
-                console.log(countFee);
             }
             return countFee;
         }  
@@ -100,7 +106,11 @@ export default {
         clearCar(){
             if(confirm("确定清空购物车吗？")){
                 localStorage.removeItem("shopCar");
+                this.reload();
             }
+        },
+        payMoney(){
+            alert("付款");
         }
     }
 }
@@ -128,6 +138,23 @@ export default {
         height: 3rem;
         margin: 1rem 0;
         background-color: rgb(219, 219, 219);
+        .countBtn {
+            height: 3rem;
+            width: 5rem;
+            background-color: $MAIN_COLOR;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            a { 
+                font-size: 1.2rem;   
+                text-decoration: none;
+                color: $COLOR_FFF;
+            }
+            &:hover {
+                background-color: $MAIN_SELECT_COLOR;
+                cursor: pointer;
+            }
+        }
     }
 }
 

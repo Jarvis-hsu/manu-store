@@ -90,31 +90,42 @@ export default {
         },
         addCar(){
             var shopCar = localStorage.getItem("shopCar");
-            // localStorage.removeItem("shopCar");
-            // return;
             var addProd = {};
             var prodList = [];
-            if(shopCar != null){
-               prodList = JSON.parse(localStorage.getItem("shopCar"));
-            }
 
-            if(this.prodSize == ""){
-                alert("请选择需要的尺寸");
-                return;
-            }else{
+            if(this.validate()){
+                if(shopCar != null){
+                     prodList = JSON.parse(localStorage.getItem("shopCar"));
+                }
+            
                 addProd.id = this.prodId;
                 addProd.name = this.prodName;
                 addProd.price = this.prodPrice;
                 addProd.size = this.prodSize;
                 addProd.num = this.num;
                 addProd.totalFee = this.totalPrice;   
+                
+                prodList.push(addProd);
+                localStorage.setItem("shopCar", JSON.stringify(prodList));
+    
+                alert("加入购物车成功");
             }
-            
-            prodList.push(addProd);
-            localStorage.setItem("shopCar", JSON.stringify(prodList));
+        },
+        validate(){
+            var user = sessionStorage.getItem("username");
+            var isPass = true;
 
-            alert("加入购物车成功");
-            console.log(JSON.parse(localStorage.getItem("shopCar")));
+            if(user!=null){
+                if(this.prodSize == ""){
+                    alert("请选择需要的尺寸");
+                    isPass = false;
+                }
+            }else{
+                isPass = false;
+                alert("请先登录!");
+                this.$router.push("/login");
+            }
+            return isPass;
         }
     }
 }
