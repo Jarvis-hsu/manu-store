@@ -10,8 +10,8 @@
             <Col span="8" offset="1">
                 <Breadcrumb style="text-align:left;">
                     <BreadcrumbItem to="/">主页</BreadcrumbItem>
-                    <BreadcrumbItem to="/shop">商店</BreadcrumbItem>
-                    <BreadcrumbItem>{{navName[parentType]}}</BreadcrumbItem>
+                    <BreadcrumbItem>商店</BreadcrumbItem>
+                    <BreadcrumbItem to="/shop/showProds">{{navName[parentType]}}</BreadcrumbItem>
                     <BreadcrumbItem v-if="prodName !=''">{{prodName}}</BreadcrumbItem>
                 </Breadcrumb>
             </Col>

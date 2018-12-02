@@ -71,14 +71,16 @@ export default {
 
                 sessionStorage.setItem("navList", JSON.stringify(list));
 
-                sessionStorage.removeItem("prod");//产品清空
-                this.$store.commit("setProd", null); 
+                // sessionStorage.removeItem("prod");//产品清空
+                // this.$store.commit("setProd", null); 
 
                 this.$router.push('/shop/showProds');
 
             }else{
-                childType = JSON.parse(sessionStorage.getItem("navType")).childType;
-                parentType = JSON.parse(sessionStorage.getItem("navType")).parentType;
+                if(sessionStorage.getItem("navType")!=null){
+                    childType = JSON.parse(sessionStorage.getItem("navType")).childType;
+                    parentType = JSON.parse(sessionStorage.getItem("navType")).parentType;
+                }
                 list = JSON.parse(sessionStorage.getItem("navList"));
             }
             

@@ -100,6 +100,7 @@ export default {
             
                 addProd.id = this.prodId;
                 addProd.name = this.prodName;
+                addProd.imgUrl = this.prodImgUrl;
                 addProd.price = this.prodPrice;
                 addProd.size = this.prodSize;
                 addProd.num = this.num;

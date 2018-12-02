@@ -13,6 +13,16 @@ Vue.use(iview);
 Vue.prototype.$store = store;
 Vue.prototype.$http = http;
 
+router.beforeEach((to, from, next) =>{
+    if(to.path == "/shop/showProds"){
+        sessionStorage.removeItem("prod");//产品清空
+        store.commit("setProd", null);
+    }
+    next();
+})
+
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
