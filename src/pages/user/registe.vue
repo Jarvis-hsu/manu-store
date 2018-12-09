@@ -4,34 +4,34 @@
             <Col span="6">
                 <h2>欢迎加入曼联</h2>
                 <Row type="flex" align="middle">
-                    <Col span="4">
+                    <Col span="5">
                         <span><i>＊</i>用&nbsp;&nbsp;户&nbsp;&nbsp;名：</span>
                     </Col>
-                    <Col span="18">
+                    <Col span="17">
                         <Input type="text" v-model="username"></Input>
                     </Col>
                 </Row>
                 <Row type="flex" align="middle">
-                    <Col span="4">
+                    <Col span="5">
                         <span><i>＊</i>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</span>
                     </Col>
-                    <Col span="18">
+                    <Col span="17">
                         <Input type="password" v-model="passwd"></Input>
                     </Col>
                 </Row>
                 <Row type="flex" align="middle">
-                    <Col span="4">
+                    <Col span="5">
                         <span><i>＊</i>确认密码：</span>
                     </Col>
-                    <Col span="18">
+                    <Col span="17">
                         <Input type="password" v-model="passwdCheck"></Input>
                     </Col>
                 </Row>
                 <Row type="flex" align="middle">
-                    <Col span="4">
+                    <Col span="5">
                         <span>&nbsp;&nbsp;邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：</span>
                     </Col>
-                    <Col span="18">
+                    <Col span="17">
                         <Input type="text" v-model="email"></Input>
                     </Col>
                 </Row>
@@ -131,6 +131,7 @@ export default {
     height: 20rem;
     span {
         font-size: 0.8rem;
+        width: 4rem;
         i {
             color: red;
         }
