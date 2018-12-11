@@ -56,7 +56,6 @@ export default {
     created(){
         this.getNavType();
         this.classList = this.$store.state.navList;
-        
     },
     methods: {
         getNavType(){

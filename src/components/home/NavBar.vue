@@ -46,7 +46,7 @@ export default {
     },
     created(){
         this.getMenuData();
-        this.shopInit("");
+        // this.shopInit("");
     },
     methods: {
         shopInit(name){
@@ -95,6 +95,7 @@ export default {
                 transformResponse: [function(data){
                     //处理数据
                     _this.setMenu(JSON.parse(data));
+                    sessionStorage.setItem("menuTypeList", data);
                 }]
             })
         },

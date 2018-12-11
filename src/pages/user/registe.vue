@@ -36,11 +36,14 @@
                     </Col>
                 </Row>
                 <Row type="flex" justify="center" align="middle">
-                    <Col>
-                        <Button type="primary" @click="handleSubmit('formCustom')">提交</Button>
+                    <Col span="4">
+                        <Button type="primary" style="background-color: rgb(212, 0, 0);border: 1px solid rgb(212, 0, 0)" @click="handleSubmit('formCustom')">提交</Button>
                     </Col>
-                    <Col>
+                    <Col span="4">
                         <Button @click="handleReset()" style="margin-left: 8px">重置</Button>
+                    </Col>
+                    <Col span="4">
+                        <Button @click="back()" style="margin-left: 8px">返回</Button>
                     </Col>
                 </Row>
             </Col>
@@ -115,11 +118,15 @@ export default {
             return isEmpty;
         },
 
-        handleReset (){
+        handleReset(){
             this.username = '';
             this.passwd = '';
             this.passwdCheck = '';
             this.email = '';
+        },
+
+        back(){
+            this.$router.push("/login");
         }
     }
 }
@@ -141,24 +148,25 @@ export default {
     }
     button {
         color: $TEXT_COLOR_WHITE;
-        background-color: $MAIN_COLOR;
-        border-radius: unset;
-        &:hover {
-            color: $TEXT_COLOR_WHITE;
-            background-color: $MAIN_COLOR;
-            border-color: $MAIN_COLOR;
-        }
-    }
-    a {
-        color: $TEXT_COLOR_WHITE;
         background-color: $COLOR_BLACK;
         border-radius: unset;
-        &:hover{
+        border: 1px solid $COLOR_BLACK;
+        &:hover {
             color: $TEXT_COLOR_WHITE;
             background-color: $COLOR_BLACK;
-            border-color: $COLOR_BLACK;
+            border: 1px solid $COLOR_BLACK;
         }
     }
+    // a {
+    //     color: $TEXT_COLOR_WHITE;
+    //     background-color: $COLOR_BLACK;
+    //     border-radius: unset;
+    //     &:hover{
+    //         color: $TEXT_COLOR_WHITE;
+    //         background-color: $COLOR_BLACK;
+    //         border-color: $COLOR_BLACK;
+    //     }
+    // }
 }
 
 </style>

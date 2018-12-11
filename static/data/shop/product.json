@@ -21,9 +21,9 @@
         "imgUrl": "../../static/img/clo-2.jpg"
     },
     {
-        "id": "jersey_1_1",
-        "name": "曼联客场球衣 2018-19",
-        "type": "jersey_1",
+        "id": "training_0_0",
+        "name": "2018-19男款训练球衣",
+        "type": "training_0",
         "price": 299,
         "imgUrl": "../../static/img/clo-3.jpg"
     },

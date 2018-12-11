@@ -4,9 +4,9 @@
             <li v-for="(item,index) in menuList" class="pane">
                 <div class="menus"  @mouseenter="showOrHide(index)">
                     <img :src="item.imgUrl"/>
-                    <Button :class="{focus:item.isShow}" size="large" @click="goToBuy">{{item.name}}</Button>
+                    <Button :class="{focus:item.isShow}" size="large" @click="goToBuy(item.menuType)">{{item.name}}</Button>
                 </div>
-                <div :id="index" class="cover" v-show="item.isShow" @mouseleave="showOrHide(index)" @click="goToBuy">
+                <div :id="index" class="cover" v-show="item.isShow" @mouseleave="showOrHide(index)" @click="goToBuy(item.menuType)">
                     <span>立刻选购</span>
                 </div>
             </li>
@@ -19,22 +19,53 @@ export default {
     data () {
         return {
             menuList: [
-                {isShow: false, name: '18/19赛季曼联第三球衣', imgUrl: '../../../static/img/ggg.jpg'},
-                {isShow: false, name: 'NEW ERA' , imgUrl: '../../../static/img/fff.jpg'},
-                {isShow: false, name: '18/19训练系列' , imgUrl: '../../../static/img/bbb.jpg'},
+                {isShow: false, name: '18/19赛季客场球衣', imgUrl: '../../../static/img/fff.jpg', menuType: 'jersey_1'},
+                {isShow: false, name: '18/19赛季曼联主场' , imgUrl: '../../../static/img/ggg.jpg', menuType: 'jersey_0'},
+                {isShow: false, name: '18/19训练系列' , imgUrl: '../../../static/img/bbb.jpg', menuType: 'training_0'},
+                {isShow: false, name: '运动装备' , imgUrl: '../../../static/img/eee.jpg', menuType: 'equip_0'},
                 // {isShow: false, name: '曼联赛前上衣' , imgUrl: '../../../static/img/fff.jpg'},
-                {isShow: false, name: 'NEW ERA帽子' , imgUrl: '../../../static/img/eee.jpg'},
                 // {isShow: false, name: '1968年欧洲杯冠军系列' , imgUrl: '../../../static/img/ggg.jpg'},
-            ]
+            ],
+            menuTypeList: []
         }
+    },
+    mounted(){
+        this.menuTypeList = JSON.parse(sessionStorage.getItem("menuTypeList"));
     },
     methods: {
         //显示隐藏
         showOrHide(curId){
             this.menuList[curId].isShow = !this.menuList[curId].isShow;
         },
-        goToBuy(){
-            this.$router.push('/shop');
+        goToBuy(menuType){
+            var childType = menuType;
+            var parentType = menuType.split("_")[0];
+            var navTypeObj = {
+                    "childType": childType,
+                    "parentType": parentType
+            }
+            var list = this.getMenuChildList(parentType);
+
+            sessionStorage.setItem("navType", JSON.stringify(navTypeObj));
+            this.$store.commit("setNavType", navTypeObj);
+
+            sessionStorage.setItem("navList", JSON.stringify(list));
+            this.$store.commit("setNavList", list);
+
+            //跳转
+            this.$router.push('/shop/showProds');
+        },
+
+        getMenuChildList(parentType){
+            var childList = [];
+            for(var i=0; i<this.menuTypeList.length;i++){
+                if(this.menuTypeList[i].type==parentType){
+                    childList = this.menuTypeList[i].list;
+                    break;
+                }
+            }
+
+            return childList;
         }
     }
 }
